@@ -1,13 +1,17 @@
 const fs = require("fs");
 const yaml = require("js-yaml");
+const os = require("os");
+const path = require("path");
+
+const divider = os.type().toLowerCase().includes("windows") ? "\\" : "/";
 
 const {
   sortMetadataArrayByCreationDate,
   createDictionaryAndIDs,
 } = require("./lib");
 
-const mdSrcfolderPath = process.cwd() + `\\src\\md`;
-const dbDestPath = process.cwd() + `\\src\\app`;
+const mdSrcfolderPath = path.join(process.cwd(), "src", "md");
+const dbDestPath = process.cwd() + `${divider}src${divider}app`;
 const dbFileName = "db.json";
 
 const mdList = fs
@@ -22,7 +26,7 @@ const metadataArray = [];
 for (const filename of mdList) {
   const meta = {};
   meta["filename"] = filename;
-  const filePath = mdSrcfolderPath + "\\" + filename;
+  const filePath = mdSrcfolderPath + divider + filename;
   const stats = fs.statSync(filePath);
   meta["creation"] = stats.birthtime;
   meta["modification"] = stats.mtime;
@@ -41,6 +45,10 @@ const { dictionary, idList } = createDictionaryAndIDs(metadataArray);
 db["dictionary"] = dictionary;
 db["list"] = idList;
 
-fs.writeFileSync(dbDestPath + "\\" + dbFileName, JSON.stringify(db), (err) => {
-  throw err;
-});
+fs.writeFileSync(
+  dbDestPath + divider + dbFileName,
+  JSON.stringify(db),
+  (err) => {
+    throw err;
+  }
+);
