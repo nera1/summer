@@ -1,8 +1,8 @@
----
+<!-----
 title: syntax test
 author: nera
 creation: 1998-05-14
----
+----->
 
 # Markdown: Syntax
 
