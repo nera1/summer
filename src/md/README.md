@@ -1,18 +1,15 @@
-<!-----
+---
 author: me
 title: "good"
-date: "2021-5-4"
+created: "2021-5-4"
+category: nest.js
 tags:
-  - ddd
-  - eee
-  - 456
-  - "asd"
-  - _+!_@#!(@())'
-  - 216546-5465
-  - true
-  - 2126-45-08
+  - typescript
+  - ts
+  - javascript
+  - js
 modified: 2024-4-7
------>
+---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

@@ -1,8 +1,13 @@
-<!-----
+---
 title: syntax test
 author: nera
-creation: 1998-05-14
------>
+created: 1998-05-14
+category: typescript
+tags:
+  - ts
+  - js
+  - javascript
+---
 
 # Markdown: Syntax
 
