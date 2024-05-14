@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const value = await remark().use(html).process(file);
   return (
     <main>
-      <div>{file}</div>
+      <div dangerouslySetInnerHTML={{ __html: value }}></div>
     </main>
   );
 }
