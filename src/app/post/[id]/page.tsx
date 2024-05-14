@@ -13,7 +13,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const file = readFileSync(
     join(process.cwd(), "src", "md", dictionary[params.id]?.filename)
   ).toString();
-  const value = await remark().use(html).process(file);
+  const { value } = await remark().use(html).process(file);
   return (
     <main>
       <div dangerouslySetInnerHTML={{ __html: value }}></div>
