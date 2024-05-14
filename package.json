@@ -6,7 +6,8 @@
     "dev": "node ./parser/parser.js && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "install": "^0.13.0",
