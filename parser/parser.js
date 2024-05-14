@@ -12,7 +12,7 @@ const {
 
 const fields = ["tags", "category", "created", "modified", "author"];
 const mdSrcfolderPath = path.join(process.cwd(), "src", "md");
-const dbDestPath = path.join(process.cwd(), src, app);
+const dbDestPath = path.join(process.cwd(), "src", "app");
 const dbFileName = "db.json";
 
 const mdList = fs
