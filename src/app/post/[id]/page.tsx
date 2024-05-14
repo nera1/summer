@@ -10,9 +10,12 @@ export function generateStaticParams() {
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { dictionary }: any = db;
+  const yamlPattern = /^---[\s\S]+?---/;
   const file = readFileSync(
     join(process.cwd(), "src", "md", dictionary[params.id]?.filename)
-  ).toString();
+  )
+    .toString()
+    .replace(yamlPattern, "");
   const { value } = await remark().use(html).process(file);
   return (
     <main>
