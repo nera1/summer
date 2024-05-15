@@ -1,0 +1,35 @@
+@use "variables" as var;
+
+.home {
+  background-color: var.$bg-color;
+  display: flex;
+}
+
+.category-list {
+  padding: 0;
+  margin: 0;
+  border-right: 0.5px solid var.$bg-color-lighter;
+  box-sizing: border-box;
+  min-height: 100vh;
+  .category-item {
+    list-style: none;
+    padding: 18px 24px;
+    margin: 0;
+    color: var.$color;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    & > .icon {
+      border-radius: 50%;
+      box-sizing: border-box;
+      border: 0;
+      width: 30px;
+      height: 30px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

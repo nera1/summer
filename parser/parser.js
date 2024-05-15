@@ -1,6 +1,5 @@
 const fs = require("fs");
 const yaml = require("js-yaml");
-const os = require("os");
 const path = require("path");
 
 const yamlPattern = /^---[\s\S]+?---/;
@@ -8,9 +7,12 @@ const yamlPattern = /^---[\s\S]+?---/;
 const {
   sortMetadataArrayByCreationDate,
   createDictionaryAndIDs,
+  createTagMap,
+  createTitleList,
+  createCategoryMap,
 } = require("./lib");
 
-const fields = ["tags", "category", "created", "modified", "author"];
+const fields = ["tags", "category", "created", "modified", "author", "title"];
 const mdSrcfolderPath = path.join(process.cwd(), "src", "md");
 const dbDestPath = path.join(process.cwd(), "src", "app");
 const dbFileName = "db.json";
@@ -49,6 +51,9 @@ const { dictionary, idList } = createDictionaryAndIDs(metadataArray);
 
 db["dictionary"] = dictionary;
 db["list"] = idList;
+db["tags"] = createTagMap(metadataArray);
+db["titles"] = createTitleList(metadataArray);
+db["categories"] = createCategoryMap(metadataArray);
 
 fs.writeFileSync(
   path.join(dbDestPath, dbFileName),
