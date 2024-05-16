@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import db from "@/app/db.json";
-import iconLink from "@/app/icon_link.json";
 
 import "@/styles/globals.css";
 import styles from "@/styles/home.module.scss";
