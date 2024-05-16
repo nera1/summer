@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-
-import db from "@/app/db.json";
-
-import "@/styles/globals.css";
-import styles from "@/styles/home.module.scss";
 import { readFileSync } from "fs";
 import { join } from "path";
+
+import db from "@/data/db.json";
+
+import "./globals.css";
+import styles from "@/styles/home.module.scss";
 
 export const metadata: Metadata = {
   title: "Nera",
@@ -23,7 +23,9 @@ export default function RootLayout({
   const link: {
     [key: string]: string;
   } = JSON.parse(
-    readFileSync(join(process.cwd(), "src", "app", "icon_link.json")).toString()
+    readFileSync(
+      join(process.cwd(), "src", "data", "icon_link.json")
+    ).toString()
   );
 
   return (

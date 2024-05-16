@@ -2,9 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const { distance, closest } = require("fastest-levenshtein");
 
-const { categories } = require("../src/app/db.json");
+const { categories } = require("../src/data/db.json");
 
-const linkDestPath = path.join(process.cwd(), "src", "app");
+const linkDestPath = path.join(process.cwd(), "src", "data");
 const linkFilename = "icon_link.json";
 
 const categoryList = Object.keys(categories);
