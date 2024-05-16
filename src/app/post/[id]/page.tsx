@@ -3,7 +3,7 @@ import { join } from "path";
 import { remark } from "remark";
 import html from "remark-html";
 
-import db from "@/app/db.json";
+import db from "@/data/db.json";
 
 export function generateStaticParams() {
   return db.list.map((item) => ({ id: item }));
