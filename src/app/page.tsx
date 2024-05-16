@@ -1,5 +1,3 @@
-import db from "@/app/db.json";
-
 export default async function Home() {
   return (
     <main>
