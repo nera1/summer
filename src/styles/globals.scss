@@ -1,4 +1,4 @@
-/*dark*/
+@use "variables" as var;
 
 @font-face {
   font-family: "Pretendard";
@@ -15,6 +15,14 @@ html {
 
 body > * {
   font-family: "Pretendard";
+}
+
+body {
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  background-color: var.$bg-color;
 }
 
 .markdown-body {

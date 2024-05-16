@@ -2,34 +2,96 @@
 
 .home {
   background-color: var.$bg-color;
-  display: flex;
+  & > header {
+    height: var.$header-height;
+    border-bottom: 0.5px solid var.$bg-color-lighter;
+    box-sizing: border-box;
+    position: sticky;
+    left: 0;
+    top: 0;
+    backdrop-filter: blur(10px);
+  }
+  & > main {
+    width: 100%;
+    min-height: calc(100vh - var.$header-height);
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    & > aside {
+      min-height: 100%;
+      & > nav {
+        height: 100%;
+      }
+    }
+  }
+  & .container {
+    width: 100%;
+    max-width: var.$content-width;
+  }
 }
 
-.category-list {
+.recent-post-list {
   padding: 0;
   margin: 0;
-  border-right: 0.5px solid var.$bg-color-lighter;
+}
+
+.recent-post-list-item {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 20px;
   box-sizing: border-box;
-  min-height: 100vh;
-  .category-item {
-    list-style: none;
-    padding: 18px 24px;
-    margin: 0;
-    color: var.$color;
-    font-size: 16px;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  & .category {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
+    font-size: small;
+    color: var.$bg-color-x-lighter;
     & > .icon {
       border-radius: 50%;
-      box-sizing: border-box;
-      border: 0;
-      width: 30px;
-      height: 30px;
-      padding: 4px;
+    }
+  }
+  & .title {
+    font-size: 24px;
+    line-height: 1;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  & .date {
+    font-size: small;
+    color: var.$bg-color-xx-lighter;
+    display: flex;
+    gap: 8px;
+    & > span {
+      display: flex;
+      gap: 8px;
+    }
+  }
+  & .tag {
+    display: flex;
+    gap: 8px;
+    & > .tag-badge {
+      text-decoration: underline;
+      font-size: small;
+      color: var.$bg-color-x-lighter;
       display: flex;
       align-items: center;
-      justify-content: center;
+      &::after {
+        content: ",";
+      }
+      &:last-child::after {
+        content: "";
+      }
     }
+  }
+  & > a {
+    color: var.$color;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 }

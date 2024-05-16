@@ -41,6 +41,9 @@ for (const filename of mdList) {
         meta[field] = yamlData[field];
       }
     }
+    if (!meta["title"]) {
+      meta["title"] = filename.split(".")[0];
+    }
   }
   metadataArray.push(meta);
 }

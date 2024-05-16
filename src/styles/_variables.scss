@@ -1,4 +1,10 @@
-$bg-color: #0b0b0c;
-$bg-color-lighter: lighten($bg-color, 15%);
+$bg-color: #0d0d0e;
+$bg-color-lighter: lighten($bg-color, 10%);
+$bg-color-x-lighter: lighten($bg-color-lighter, 10%);
+$bg-color-xx-lighter: lighten($bg-color-x-lighter, 10%);
 
 $color: #dadada;
+
+$header-height: 60px;
+$category-list-item-size: 55px;
+$content-width: 740px;

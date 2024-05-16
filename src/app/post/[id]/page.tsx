@@ -18,9 +18,5 @@ export default async function Page({ params }: { params: { id: string } }) {
     .toString()
     .replace(yamlPattern, "");
   const { value } = await remark().use(html).process(file);
-  return (
-    <main>
-      <div dangerouslySetInnerHTML={{ __html: value }}></div>
-    </main>
-  );
+  return <div dangerouslySetInnerHTML={{ __html: value }}></div>;
 }
