@@ -5,7 +5,7 @@ import { join } from "path";
 
 import db from "@/data/db.json";
 
-import "./globals.scss";
+import "@/styles/globals.scss";
 import styles from "@/styles/home.module.scss";
 
 export const metadata: Metadata = {
