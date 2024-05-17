@@ -63,7 +63,7 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
         <CategoryListItem
           className={selected === category ? styles["selected"] : ""}
           category={category}
-          iconFilename={`/icons/${iconLink[category]}`}
+          iconFilename={`../../../public/icons/${iconLink[category]}`}
           key={category}
         />
       ))}

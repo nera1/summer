@@ -1,15 +1,16 @@
-import { FunctionComponent, useContext } from "react";
+import { FunctionComponent } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { readFileSync } from "fs";
 import { join } from "path";
 
+import CategoryList from "@/components/category-list/category-list";
+
 import db from "@/data/db.json";
 
 import "@/styles/globals.scss";
 import styles from "@/styles/home.module.scss";
-import CategoryList from "@/components/category-list/category-list";
 
 export const metadata: Metadata = {
   title: "Nera",
