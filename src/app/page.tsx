@@ -31,7 +31,7 @@ const RecentPostListItem: FunctionComponent<
     <li className={styles["recent-post-list-item"]}>
       <Link href={`/post/${id}`}>
         <span className={styles["category"]}>
-          <Image
+          <img
             className={styles["icon"]}
             src={`/icons/${iconLink[category || "markdown.svg"]}`}
             width={18}
@@ -48,7 +48,7 @@ const RecentPostListItem: FunctionComponent<
           {tags.map((tag) => (
             <Link
               className={styles["tag-badge"]}
-              href={`/tag/${tag}`}
+              href={`/`}
               key={`${id}_${tag}`}
             >
               {tag}

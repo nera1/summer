@@ -28,7 +28,7 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
   return (
     <li className={`${styles["category-item"]} ${className || ""}`}>
       <Link className={styles["link"]} href={`/${category}`}>
-        <Image
+        <img
           className={styles["icon"]}
           src={iconFilename || ""}
           alt={category}
