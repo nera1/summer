@@ -55,19 +55,18 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
     (typeof category === "object" ? category[0] : category) || ""
   );
   const pathname = usePathname();
+  const param = useParams();
 
   useEffect(() => {
     setSelected(typeof category === "object" ? category[0] : category);
   }, [category]);
 
   useEffect(() => {
+    console.log(`pathname:`);
     console.log(pathname);
-    if (!pathname || indexCheck(pathname)) {
-      console.log("index page");
-    } else {
-      console.log("not index page");
-    }
-  }, [pathname]);
+    console.log("param:");
+    console.log(param);
+  }, [pathname, param]);
 
   return (
     <ul className={styles["category-list"]}>
