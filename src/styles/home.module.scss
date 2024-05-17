@@ -27,6 +27,7 @@
   & .container {
     width: 100%;
     max-width: var.$content-width;
+    padding-left: var.$content-padding-left;
   }
 }
 
@@ -38,7 +39,6 @@
 .recent-post-list-item {
   padding-top: 16px;
   padding-bottom: 16px;
-  padding-left: 20px;
   box-sizing: border-box;
   margin: 0;
   list-style: none;

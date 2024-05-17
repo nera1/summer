@@ -1,10 +1,12 @@
 $bg-color: #0d0d0e;
-$bg-color-lighter: lighten($bg-color, 10%);
-$bg-color-x-lighter: lighten($bg-color-lighter, 10%);
-$bg-color-xx-lighter: lighten($bg-color-x-lighter, 10%);
+$bg-color-lighter: lighten($bg-color, 5%);
+$bg-color-x-lighter: lighten($bg-color-lighter, 5%);
+$bg-color-xx-lighter: lighten($bg-color-x-lighter, 5%);
 
 $color: #dadada;
+$color-darker: darken($color, 5%);
 
 $header-height: 60px;
-$category-list-item-size: 55px;
+$category-list-item-size: 45px;
 $content-width: 740px;
+$content-padding-left: 20px;

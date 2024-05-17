@@ -5,6 +5,8 @@ import html from "remark-html";
 
 import db from "@/data/db.json";
 
+import styles from "@/styles/post/post.module.scss";
+
 export function generateStaticParams() {
   return db.list.map((item) => ({ id: item }));
 }
@@ -18,5 +20,10 @@ export default async function Page({ params }: { params: { id: string } }) {
     .toString()
     .replace(yamlPattern, "");
   const { value } = await remark().use(html).process(file);
-  return <div dangerouslySetInnerHTML={{ __html: value }}></div>;
+  return (
+    <div
+      className={styles["post"]}
+      dangerouslySetInnerHTML={{ __html: value }}
+    ></div>
+  );
 }

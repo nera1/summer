@@ -32,8 +32,8 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
           className={styles["icon"]}
           src={iconFilename || ""}
           alt={category}
-          width={20}
-          height={20}
+          width={24}
+          height={24}
         />
       </Link>
     </li>
@@ -59,11 +59,20 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
 
   return (
     <ul className={styles["category-list"]}>
+      <li
+        className={`${styles["category-item"]} ${
+          selected ? "" : styles["selected"]
+        }`}
+      >
+        <Link className={styles["link"]} href={`/`}>
+          <img src={`/icons/nera.png`} alt="home" width={24} height={24} />
+        </Link>
+      </li>
       {list.map((category) => (
         <CategoryListItem
           className={selected === category ? styles["selected"] : ""}
           category={category}
-          iconFilename={`icons/${iconLink[category]}`}
+          iconFilename={`/icons/${iconLink[category]}`}
           key={category}
         />
       ))}

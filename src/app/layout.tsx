@@ -17,6 +17,9 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Nera",
   description: "Nera",
+  icons: {
+    icon: "/favicon/favicon.ico",
+  },
 };
 
 type CategoryItem = {
