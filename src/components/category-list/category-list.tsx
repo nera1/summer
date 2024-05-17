@@ -41,8 +41,6 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
 };
 
 const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
-  const assetPrefix = process.env.NODE_ENV === "production" ? "/sumr" : "";
-
   list = list.sort((prev, next) => {
     if (next < prev) {
       return 1;
@@ -75,19 +73,14 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
         }`}
       >
         <Link className={styles["link"]} href={`/`}>
-          <img
-            src={`${assetPrefix}/icons/nera.png`}
-            alt="home"
-            width={24}
-            height={24}
-          />
+          <img src={`/icons/nera.png`} alt="home" width={24} height={24} />
         </Link>
       </li>
       {list.map((category) => (
         <CategoryListItem
           className={selected === category ? styles["selected"] : ""}
           category={category}
-          iconFilename={`${assetPrefix}/icons/${iconLink[category]}`}
+          iconFilename={`/icons/${iconLink[category]}`}
           key={category}
         />
       ))}
