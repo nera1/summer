@@ -61,7 +61,7 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
   }, [category]);
 
   useEffect(() => {
-    if (indexCheck(pathname)) {
+    if (!pathname || indexCheck(pathname)) {
       console.log("index page");
     }
     {
