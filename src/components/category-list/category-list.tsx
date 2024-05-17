@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { FunctionComponent, useEffect, useState } from "react";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 import styles from "@/styles/components/category-list.module.scss";
 
@@ -49,12 +49,14 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
     }
   });
   const { category } = useParams();
+  const value = usePathname();
   const [selected, setSelected] = useState<string>(
     (typeof category === "object" ? category[0] : category) || ""
   );
 
   useEffect(() => {
     setSelected(typeof category === "object" ? category[0] : category);
+    console.log(value);
   }, [category]);
 
   return (

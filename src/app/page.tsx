@@ -31,9 +31,11 @@ const RecentPostListItem: FunctionComponent<
     <li className={styles["recent-post-list-item"]}>
       <Link href={`/post/${id}`}>
         <span className={styles["category"]}>
-          <img
+          <Image
             className={styles["icon"]}
-            src={`/icons/${iconLink[category || "markdown.svg"]}`}
+            src={`https://nera1.github.io/sumr/icons/${
+              iconLink[category || "markdown.svg"]
+            }`}
             width={18}
             height={18}
             alt={category || "nothing"}
@@ -44,18 +46,14 @@ const RecentPostListItem: FunctionComponent<
         <span className={styles["date"]}>
           <span className={styles["created"]}>{createDateString(created)}</span>
         </span>
-        <span className={styles["tag"]}>
-          {tags.map((tag) => (
-            <Link
-              className={styles["tag-badge"]}
-              href={`/`}
-              key={`${id}_${tag}`}
-            >
-              {tag}
-            </Link>
-          ))}
-        </span>
       </Link>
+      <span className={styles["tag"]}>
+        {tags.map((tag) => (
+          <Link className={styles["tag-badge"]} href={`/`} key={`${id}_${tag}`}>
+            {tag}
+          </Link>
+        ))}
+      </span>
     </li>
   );
 };
