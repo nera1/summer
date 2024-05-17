@@ -2,6 +2,9 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import { remark } from "remark";
 import html from "remark-html";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import rehypeHighlight from "rehype-highlight";
 
 import db from "@/data/db.json";
 
@@ -19,10 +22,14 @@ export default async function Page({ params }: { params: { id: string } }) {
   )
     .toString()
     .replace(yamlPattern, "");
-  const { value } = await remark().use(html).process(file);
+  const { value } = await remark()
+    .use(remarkRehype)
+    .use(rehypeHighlight)
+    .use(rehypeStringify)
+    .process(file);
   return (
     <div
-      className={styles["post"]}
+      className={`${styles["post"]} markdown`}
       dangerouslySetInnerHTML={{ __html: value }}
     ></div>
   );
