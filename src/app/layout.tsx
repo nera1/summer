@@ -12,6 +12,8 @@ import db from "@/data/db.json";
 import "@/styles/globals.scss";
 import styles from "@/styles/home.module.scss";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Nera",
   description: "Nera",
@@ -53,6 +55,7 @@ export default function RootLayout({
       join(process.cwd(), "src", "data", "icon_link.json")
     ).toString()
   );
+
   return (
     <html lang="en">
       <body className={styles["home"]}>
