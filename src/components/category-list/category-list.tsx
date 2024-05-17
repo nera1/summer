@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
 
 import styles from "@/styles/components/category-list.module.scss";
+import { indexCheck } from "@/util";
 
 type CategoryListItem = {
   category: string;
@@ -53,15 +54,20 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
   const [selected, setSelected] = useState<string>(
     (typeof category === "object" ? category[0] : category) || ""
   );
-  const pn = usePathname();
+  const pathname = usePathname();
 
   useEffect(() => {
     setSelected(typeof category === "object" ? category[0] : category);
   }, [category]);
 
   useEffect(() => {
-    console.log(pn);
-  }, [pn]);
+    if (indexCheck(pathname)) {
+      console.log("index page");
+    }
+    {
+      console.log("not index page");
+    }
+  }, [pathname]);
 
   return (
     <ul className={styles["category-list"]}>
