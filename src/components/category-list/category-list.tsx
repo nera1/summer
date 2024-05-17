@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { FunctionComponent, useEffect, useState } from "react";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 import styles from "@/styles/components/category-list.module.scss";
 
@@ -53,18 +53,15 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
   const [selected, setSelected] = useState<string>(
     (typeof category === "object" ? category[0] : category) || ""
   );
-  const params = useParams();
-  const [iconPath, setIconpath] = useState<string>(
-    Object.keys(params).length ? "/" : ""
-  );
+  const pn = usePathname();
 
   useEffect(() => {
     setSelected(typeof category === "object" ? category[0] : category);
   }, [category]);
 
   useEffect(() => {
-    console.log(params);
-  }, [params]);
+    console.log(pn);
+  }, [pn]);
 
   return (
     <ul className={styles["category-list"]}>
@@ -74,19 +71,14 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
         }`}
       >
         <Link className={styles["link"]} href={`/`}>
-          <img
-            src={`${iconPath}icons/nera.png`}
-            alt="home"
-            width={24}
-            height={24}
-          />
+          <img src={`icons/nera.png`} alt="home" width={24} height={24} />
         </Link>
       </li>
       {list.map((category) => (
         <CategoryListItem
           className={selected === category ? styles["selected"] : ""}
           category={category}
-          iconFilename={`${iconPath}icons/${iconLink[category]}`}
+          iconFilename={`icons/${iconLink[category]}`}
           key={category}
         />
       ))}
