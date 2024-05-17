@@ -12,8 +12,6 @@ import db from "@/data/db.json";
 import "@/styles/globals.scss";
 import styles from "@/styles/home.module.scss";
 
-export const dynamic = "force-static";
-
 export const metadata: Metadata = {
   title: "Nera",
   description: "Nera",
