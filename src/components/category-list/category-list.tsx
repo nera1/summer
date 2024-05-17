@@ -50,23 +50,21 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
     }
   });
 
+  const pathname = usePathname();
   const { category } = useParams();
   const [selected, setSelected] = useState<string>(
     (typeof category === "object" ? category[0] : category) || ""
   );
-  const pathname = usePathname();
-  const param = useParams();
+
+  const [iconPath, setIconPath] = useState<string>(pathname === "/" ? "" : "/");
 
   useEffect(() => {
     setSelected(typeof category === "object" ? category[0] : category);
   }, [category]);
 
   useEffect(() => {
-    console.log(`pathname:`);
-    console.log(pathname);
-    console.log("param:");
-    console.log(param);
-  }, [pathname, param]);
+    setIconPath(pathname === "/" ? "" : "/");
+  }, [pathname]);
 
   return (
     <ul className={styles["category-list"]}>
@@ -76,14 +74,19 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
         }`}
       >
         <Link className={styles["link"]} href={`/`}>
-          <img src={`icons/nera.png`} alt="home" width={24} height={24} />
+          <img
+            src={`${iconPath}icons/nera.png`}
+            alt="home"
+            width={24}
+            height={24}
+          />
         </Link>
       </li>
       {list.map((category) => (
         <CategoryListItem
           className={selected === category ? styles["selected"] : ""}
           category={category}
-          iconFilename={`icons/${iconLink[category]}`}
+          iconFilename={`${iconPath}icons/${iconLink[category]}`}
           key={category}
         />
       ))}
