@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { readFileSync } from "fs";
 import { join } from "path";
+import { headers } from "next/headers";
 
 import CategoryList from "@/components/category-list/category-list";
 
@@ -12,12 +13,11 @@ import db from "@/data/db.json";
 import "@/styles/globals.scss";
 import styles from "@/styles/home.module.scss";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Nera",
   description: "Nera",
-  icons: {
-    icon: "/favicon/favicon.ico",
-  },
 };
 
 type CategoryItem = {

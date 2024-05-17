@@ -74,19 +74,14 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
         }`}
       >
         <Link className={styles["link"]} href={`/`}>
-          <img
-            src={`${iconPath}icons/nera.png`}
-            alt="home"
-            width={24}
-            height={24}
-          />
+          <img src={`/icons/nera.png`} alt="home" width={24} height={24} />
         </Link>
       </li>
       {list.map((category) => (
         <CategoryListItem
           className={selected === category ? styles["selected"] : ""}
           category={category}
-          iconFilename={`${iconPath}icons/${iconLink[category]}`}
+          iconFilename={`/icons/${iconLink[category]}`}
           key={category}
         />
       ))}
