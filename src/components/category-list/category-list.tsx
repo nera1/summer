@@ -61,10 +61,10 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
   }, [category]);
 
   useEffect(() => {
+    console.log(pathname);
     if (!pathname || indexCheck(pathname)) {
       console.log("index page");
-    }
-    {
+    } else {
       console.log("not index page");
     }
   }, [pathname]);
