@@ -31,7 +31,7 @@ const RecentPostListItem: FunctionComponent<
     <li className={styles["recent-post-list-item"]}>
       <Link href={`/post/${id}`}>
         <span className={styles["category"]}>
-          <Image
+          <img
             className={styles["icon"]}
             src={`https://nera1.github.io/sumr/icons/${
               iconLink[category || "markdown.svg"]
