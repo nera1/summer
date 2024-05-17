@@ -63,11 +63,7 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
   }, [category]);
 
   useEffect(() => {
-    if (Object.keys(params).length) {
-      setIconpath("/");
-    } else {
-      setIconpath("");
-    }
+    console.log(params);
   }, [params]);
 
   return (
