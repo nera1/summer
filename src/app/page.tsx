@@ -46,11 +46,7 @@ const RecentPostListItem: FunctionComponent<
         </span>
         <span className={styles["tag"]}>
           {tags.map((tag) => (
-            <Link
-              className={styles["tag-badge"]}
-              href={`/tag/${tag}`}
-              key={`${id}_${tag}`}
-            >
+            <Link className={styles["tag-badge"]} href={`/tag/${tag}`}>
               {tag}
             </Link>
           ))}
