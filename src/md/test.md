@@ -284,7 +284,7 @@ public class BootSpringBootApplication {
 
 <pre>
 <code>
-```java
+```java 
 public class BootSpringBootApplication {
   public static void main(String[] args) {
     System.out.println("Hello, Honeymon");
@@ -294,7 +294,7 @@ public class BootSpringBootApplication {
 </code>
 </pre>
 
-```java
+```java title="신나리셔스" showLineNumbers
 public class BootSpringBootApplication {
   public static void main(String[] args) {
     System.out.println("Hello, Honeymon");

@@ -12,6 +12,7 @@ import db from "@/data/db.json";
 
 import "@/styles/globals.scss";
 import styles from "@/styles/home.module.scss";
+import CategoryPostList from "@/components/category-post-list/category-post-list";
 
 export const dynamic = "force-static";
 
@@ -65,6 +66,11 @@ export default function RootLayout({
           <aside>
             <nav>
               <CategoryList list={Object.keys(categories)} iconLink={link} />
+            </nav>
+          </aside>
+          <aside>
+            <nav>
+              <CategoryPostList />
             </nav>
           </aside>
           <div className={styles["container"]}>{children}</div>

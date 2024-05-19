@@ -141,7 +141,7 @@ body::-webkit-scrollbar {
 }
 
 .markdown figure {
-  margin: 1em 40px;
+  margin: 1em 0px;
 }
 
 .markdown hr {
@@ -1107,4 +1107,16 @@ body::-webkit-scrollbar {
 
 .markdown .markdown-alert.markdown-alert-caution .markdown-alert-title {
   color: #f85149;
+}
+
+.markdown figure {
+  & > figcaption {
+    border-radius: 6px 6px 0 0;
+    padding: 6px 16px;
+    background-color: lighten(#161b22, 5%);
+  }
+  & > pre {
+    background-color: #161b22 !important;
+    border-radius: 0 0 6px 6px;
+  }
 }

@@ -4,7 +4,9 @@ $bg-color-x-lighter: lighten($bg-color-lighter, 5%);
 $bg-color-xx-lighter: lighten($bg-color-x-lighter, 5%);
 
 $color: #dadada;
-$color-darker: darken($color, 5%);
+$color-darker: #b3b3b3;
+$color-x-darker: #8c8c8c;
+$color-xx-darker: #666666;
 
 $header-height: 60px;
 $category-list-item-size: 45px;

@@ -1,10 +1,9 @@
 import { readFileSync } from "fs";
 import { join } from "path";
 import { remark } from "remark";
-import html from "remark-html";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
-import rehypeHighlight from "rehype-highlight";
+import rehypePrettyCode from "rehype-pretty-code";
 
 import db from "@/data/db.json";
 
@@ -24,7 +23,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     .replace(yamlPattern, "");
   const { value } = await remark()
     .use(remarkRehype)
-    .use(rehypeHighlight)
+    .use(rehypePrettyCode) // 테마 설정 예제
     .use(rehypeStringify)
     .process(file);
   return (
