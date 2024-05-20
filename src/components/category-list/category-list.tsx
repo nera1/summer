@@ -58,7 +58,8 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
   const [iconPath, setIconPath] = useState<string>(pathname === "/" ? "" : "/");
 
   useEffect(() => {
-    setSelected(typeof category === "object" ? category[0] : category);
+    const value = typeof category === "object" ? category[0] : category;
+    setSelected(value);
   }, [category]);
 
   useEffect(() => {

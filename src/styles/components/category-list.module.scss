@@ -1,12 +1,15 @@
 @use "../variables" as var;
 
 .category-list {
+  padding: 0;
   padding-top: 16px;
   margin: 0;
   box-sizing: border-box;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  position: sticky;
+  top: var.$header-height;
 }
 
 .category-item {

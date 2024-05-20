@@ -63,12 +63,12 @@ export default function RootLayout({
       <body className={styles["home"]}>
         <header></header>
         <main>
-          <aside>
+          <aside className={styles["category"]}>
             <nav>
               <CategoryList list={Object.keys(categories)} iconLink={link} />
             </nav>
           </aside>
-          <aside>
+          <aside className={styles["category-post"]}>
             <nav>
               <CategoryPostList />
             </nav>
