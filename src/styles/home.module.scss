@@ -75,6 +75,10 @@
   & .tag {
     display: flex;
     gap: 8px;
+    align-items: center;
+    & > svg {
+      fill: var.$color-xx-darker;
+    }
     & > .tag-badge {
       text-decoration: underline;
       font-size: small;

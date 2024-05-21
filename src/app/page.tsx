@@ -9,6 +9,7 @@ import iconLink from "@/data/icon_link.json";
 
 import styles from "@/styles/home.module.scss";
 import { createDateString } from "@/util";
+import Tag from "@/components/icon/tag";
 
 type RecentPostListItem = {
   filename: string;
@@ -48,6 +49,7 @@ const RecentPostListItem: FunctionComponent<
         <span className={styles["title"]}>{title}</span>
       </Link>
       <span className={styles["tag"]}>
+        <Tag />
         {tags.map((tag) => (
           <Link className={styles["tag-badge"]} href={`/`} key={`${id}_${tag}`}>
             {tag}

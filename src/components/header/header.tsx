@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 import styles from "@/styles/components/header.module.scss";
@@ -12,6 +13,7 @@ const Header: FunctionComponent = () => {
         <div className={styles["left"]}></div>
         <div className={styles["center"]}></div>
         <div className={styles["right"]}>
+          <input type="text" className={`${styles["search"]}`} />
           <Button
             variant={"ghost"}
             size="icon"
