@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { headers } from "next/headers";
+import Header from "@/components/header/header";
 
 import CategoryList from "@/components/category-list/category-list";
 
@@ -12,7 +12,6 @@ import db from "@/data/db.json";
 
 import "@/styles/globals.scss";
 import styles from "@/styles/home.module.scss";
-import CategoryPostList from "@/components/category-post-list/category-post-list";
 
 export const dynamic = "force-static";
 
@@ -25,23 +24,6 @@ type CategoryItem = {
   category: string;
   iconFilename?: string;
   selected?: boolean;
-};
-
-const CategoryItem: FunctionComponent<CategoryItem> = (props) => {
-  const { category, iconFilename } = props;
-  return (
-    <li className={styles["category-item"]}>
-      <Link className={styles["link"]} href={`/${category}`}>
-        <Image
-          className={styles["icon"]}
-          src={iconFilename || ""}
-          alt={category}
-          width={20}
-          height={20}
-        />
-      </Link>
-    </li>
-  );
 };
 
 export default function RootLayout({
@@ -61,16 +43,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={styles["home"]}>
-        <header></header>
+        <Header />
         <main>
           <aside className={styles["category"]}>
             <nav>
               <CategoryList list={Object.keys(categories)} iconLink={link} />
-            </nav>
-          </aside>
-          <aside className={styles["category-post"]}>
-            <nav>
-              <CategoryPostList />
             </nav>
           </aside>
           <div className={styles["container"]}>{children}</div>

@@ -39,6 +39,7 @@ function createTitleList(array) {
       titleList.push({
         id: item["id"],
         title: title.toLowerCase(),
+        category: item["category"],
       });
     }
   }

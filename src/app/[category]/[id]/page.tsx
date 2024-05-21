@@ -10,7 +10,18 @@ import db from "@/data/db.json";
 import styles from "@/styles/post/post.module.scss";
 
 export function generateStaticParams() {
-  return db.list.map((item) => ({ id: item }));
+  const categories: any = db.categories;
+  const params: { category: string; id: string }[] = [];
+  for (const category in categories) {
+    const ids: string[] = categories[category] as unknown as string[];
+    for (const id of ids) {
+      params.push({
+        id,
+        category,
+      });
+    }
+  }
+  return params;
 }
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -27,9 +38,12 @@ export default async function Page({ params }: { params: { id: string } }) {
     .use(rehypeStringify)
     .process(file);
   return (
-    <div
-      className={`${styles["post"]} markdown`}
-      dangerouslySetInnerHTML={{ __html: value }}
-    ></div>
+    <>
+      <div
+        className={`${styles["post"]} markdown`}
+        dangerouslySetInnerHTML={{ __html: value }}
+      ></div>
+      <div></div>
+    </>
   );
 }

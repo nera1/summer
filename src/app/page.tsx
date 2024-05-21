@@ -29,20 +29,22 @@ const RecentPostListItem: FunctionComponent<
   const { id, title, category, iconLink, created, tags } = props;
   return (
     <li className={styles["recent-post-list-item"]}>
-      <span className={styles["date"]}>
-        <span className={styles["created"]}>{createDateString(created)}</span>
+      <span className={styles["top"]}>
+        <span className={styles["category"]}>
+          <Image
+            className={styles["icon"]}
+            src={`/icons/${iconLink[category || "markdown.svg"]}`}
+            width={18}
+            height={18}
+            alt={category || "nothing"}
+          />
+          <span className={styles["category-name"]}>{category}</span>
+        </span>
+        <span className={styles["date"]}>
+          <span className={styles["created"]}>{createDateString(created)}</span>
+        </span>
       </span>
-      <span className={styles["category"]}>
-        <Image
-          className={styles["icon"]}
-          src={`/icons/${iconLink[category || "markdown.svg"]}`}
-          width={18}
-          height={18}
-          alt={category || "nothing"}
-        />
-        <span className={styles["category-name"]}>{category}</span>
-      </span>
-      <Link href={`/post/${id}`}>
+      <Link href={`/${category}/${id}`}>
         <span className={styles["title"]}>{title}</span>
       </Link>
       <span className={styles["tag"]}>
