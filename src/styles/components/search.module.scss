@@ -1,0 +1,27 @@
+@use "../variables" as var;
+
+.search {
+  height: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+  border: 0;
+  color: var.$color;
+  border: 0.5px solid var.$bg-color-xx-lighter;
+  border-radius: 6px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  gap: 4px;
+  & > input {
+    background-color: transparent;
+    padding: 8px 10px 8px 0px;
+    box-sizing: border-box;
+    border: 0;
+    height: 100%;
+    outline: none;
+  }
+  & > svg {
+    fill: var.$color-xx-darker;
+  }
+}

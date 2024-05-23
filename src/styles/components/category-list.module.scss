@@ -69,3 +69,28 @@
     }
   }
 }
+
+/* 초소형 기기 (폰, 320px 이상) */
+@media (max-width: 320px) {
+  .category-list {
+  }
+}
+
+/* 작은 기기 (폰, 480px 이상) */
+@media (max-width: 480px) {
+  .category-list {
+    display: none;
+  }
+}
+
+/* 중간 기기 (태블릿, 768px 이상) */
+@media (max-width: 768px) {
+}
+
+/* 큰 기기 (데스크탑, 1024px 이상) */
+@media (max-width: 1024px) {
+}
+
+/* 매우 큰 기기 (큰 데스크탑, 1200px 이상) */
+@media (min-width: 1024px) {
+}

@@ -34,19 +34,6 @@
       flex-grow: 1;
     }
     & > .right {
-      & > .search {
-        height: 100%;
-        background-color: transparent;
-        box-sizing: border-box;
-        border: 0;
-        width: 120px;
-        color: var.$color;
-        border: 0.5px solid var.$bg-color-xx-lighter;
-        padding: 8px 12px;
-        border-radius: 6px;
-        outline: none;
-        font-size: 14px;
-      }
       gap: 8px;
       flex-grow: 1;
       display: flex;
