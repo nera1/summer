@@ -9,6 +9,7 @@
     box-sizing: border-box;
     justify-content: center;
     position: relative;
+    padding-top: var.$main-top-padding;
     & > aside {
       min-height: 100%;
       position: relative;

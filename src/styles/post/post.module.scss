@@ -2,8 +2,6 @@
 
 .post {
   width: 100%;
-  padding: 0;
-  padding-top: 16px;
   box-sizing: border-box;
   h1,
   h2,
@@ -16,4 +14,36 @@
     color: var.$color;
     list-style: none;
   }
+}
+
+/* 초소형 기기 (폰, 320px 이상) */
+@media (max-width: var.$bp-x-small) {
+  .post {
+    padding-left: var.$reponsive-small-horizontal-padding;
+    padding-right: var.$reponsive-small-horizontal-padding;
+  }
+}
+
+/* 작은 기기 (폰, 480px 이상) */
+@media (max-width: var.$bp-small) {
+  .post {
+    padding-left: var.$reponsive-small-horizontal-padding;
+    padding-right: var.$reponsive-small-horizontal-padding;
+  }
+}
+
+/* 중간 기기 (태블릿, 768px 이상) */
+@media (max-width: var.$bp-medium) {
+  .post {
+    padding-left: var.$reponsive-small-horizontal-padding;
+    padding-right: var.$reponsive-small-horizontal-padding;
+  }
+}
+
+/* 큰 기기 (데스크탑, 1024px 이상) */
+@media (max-width: var.$bp-large) {
+}
+
+/* 매우 큰 기기 (큰 데스크탑, 1200px 이상) */
+@media (min-width: var.$bp-large) {
 }

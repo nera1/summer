@@ -18,6 +18,21 @@
       width: calc(var.$header-height - 2 * var.$header-vertical-padding);
       height: calc(var.$header-height - 2 * var.$header-vertical-padding);
       user-select: none;
+
+      &.github {
+        background-color: transparent;
+        border: 0.5px solid var.$bg-color-xx-lighter;
+      }
+      &.menu {
+        background-color: transparent;
+        border: 0.5px solid var.$bg-color-xx-lighter;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        & > svg {
+          fill: var.$color;
+        }
+      }
       & > a {
         display: flex;
         align-items: center;
@@ -33,11 +48,54 @@
     & > .left {
       flex-grow: 1;
     }
+    & > .center {
+      background-color: transparent;
+    }
     & > .right {
       gap: 8px;
       flex-grow: 1;
       display: flex;
       justify-content: flex-end;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@media (max-width: var.$bp-x-small) {
+  .header {
+    padding-left: var.$reponsive-small-horizontal-padding;
+    padding-right: var.$reponsive-small-horizontal-padding;
+  }
+}
+
+@media (min-width: calc(var.$bp-x-small + 1px)) and (max-width: var.$bp-small) {
+  .header {
+    padding-left: var.$reponsive-small-horizontal-padding;
+    padding-right: var.$reponsive-small-horizontal-padding;
+  }
+}
+
+@media (min-width: calc(var.$bp-small + 1px)) and (max-width: var.$bp-medium) {
+  .header {
+    padding-left: var.$reponsive-small-horizontal-padding;
+    padding-right: var.$reponsive-small-horizontal-padding;
+  }
+}
+
+@media (min-width: calc(var.$bp-medium + 1px)) and (max-width: var.$bp-large) {
+  .header {
+    padding-left: var.$reponsive-small-horizontal-padding;
+    padding-right: var.$reponsive-small-horizontal-padding;
+    & .menu {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: var.$bp-large) {
+  .header {
+    & .menu {
+      background-color: darkblue;
     }
   }
 }

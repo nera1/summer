@@ -152,6 +152,9 @@ body::-webkit-scrollbar {
   background-color: transparent;
   color: #2f81f7;
   text-decoration: none;
+  & > img {
+    display: inline;
+  }
 }
 
 .markdown abbr[title] {

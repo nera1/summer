@@ -5,18 +5,28 @@ import Link from "next/link";
 
 import Search from "../search/search";
 
+import { Menu } from "../icon";
+
 import styles from "@/styles/components/header.module.scss";
 
 const Header: FunctionComponent = () => {
   return (
     <header className={styles["header"]}>
       <div className={styles["container"]}>
-        <div className={styles["left"]}></div>
+        <div className={styles["left"]}>
+          <Button
+            variant={"outline"}
+            size="icon"
+            className={`${styles["menu"]} ${styles["btn"]}`}
+          >
+            <Menu className={styles["icon"]} />
+          </Button>
+        </div>
         <div className={styles["center"]}></div>
         <div className={styles["right"]}>
           <Search />
           <Button
-            variant={"ghost"}
+            variant={"outline"}
             size="icon"
             className={`${styles["github"]} ${styles["btn"]}`}
           >

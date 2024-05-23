@@ -1,7 +1,4 @@
-import { FunctionComponent } from "react";
-import Link from "next/link";
 import type { Metadata } from "next";
-import Image from "next/image";
 import { readFileSync } from "fs";
 import { join } from "path";
 import Header from "@/components/header/header";
@@ -18,12 +15,6 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Nera",
   description: "Nera",
-};
-
-type CategoryItem = {
-  category: string;
-  iconFilename?: string;
-  selected?: boolean;
 };
 
 export default function RootLayout({
