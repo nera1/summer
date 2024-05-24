@@ -79,6 +79,9 @@
   .header {
     padding-left: var.$reponsive-small-horizontal-padding;
     padding-right: var.$reponsive-small-horizontal-padding;
+    & .menu {
+      display: none !important;
+    }
   }
 }
 
@@ -87,7 +90,7 @@
     padding-left: var.$reponsive-small-horizontal-padding;
     padding-right: var.$reponsive-small-horizontal-padding;
     & .menu {
-      display: none;
+      display: none !important;
     }
   }
 }
@@ -95,7 +98,7 @@
 @media (min-width: var.$bp-large) {
   .header {
     & .menu {
-      background-color: darkblue;
+      display: none !important;
     }
   }
 }

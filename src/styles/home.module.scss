@@ -102,3 +102,26 @@
     gap: 8px;
   }
 }
+
+@media (max-width: var.$bp-x-small) {
+  .container {
+    padding-left: var.$reponsive-small-horizontal-padding;
+    padding-right: var.$reponsive-small-horizontal-padding;
+  }
+}
+
+@media (min-width: calc(var.$bp-x-small + 1px)) and (max-width: var.$bp-small) {
+  .container {
+    padding-left: var.$reponsive-small-horizontal-padding;
+    padding-right: var.$reponsive-small-horizontal-padding;
+  }
+}
+
+@media (min-width: calc(var.$bp-small + 1px)) and (max-width: var.$bp-medium) {
+}
+
+@media (min-width: calc(var.$bp-medium + 1px)) and (max-width: var.$bp-large) {
+}
+
+@media (min-width: var.$bp-large) {
+}

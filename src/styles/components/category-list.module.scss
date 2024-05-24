@@ -2,6 +2,7 @@
 
 .category-list {
   padding: 0px 16px;
+  padding-top: 16px;
   margin: 0;
   box-sizing: border-box;
   display: flex;
@@ -76,6 +77,9 @@
 }
 
 @media (min-width: calc(var.$bp-x-small + 1px)) and (max-width: var.$bp-small) {
+  .category-list {
+    display: none;
+  }
 }
 
 @media (min-width: calc(var.$bp-small + 1px)) and (max-width: var.$bp-medium) {
