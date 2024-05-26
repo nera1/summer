@@ -136,7 +136,12 @@ const CategoryList: FunctionComponent<CategoryList> = ({
       <li className={`${styles["category-item"]} ${styles["home"]}`}>
         <Accordion type="single" collapsible className={styles["accordion"]}>
           <AccordionItem value="item-1" className={styles["item"]}>
-            <Link href={"/"}>
+            <Link
+              href={"/"}
+              onClick={(event) => {
+                closerRef?.current?.click();
+              }}
+            >
               <label className={styles["name"]}>전체 글</label>
             </Link>
           </AccordionItem>
