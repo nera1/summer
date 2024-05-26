@@ -2,6 +2,8 @@
 import {
   FunctionComponent,
   MouseEventHandler,
+  MutableRefObject,
+  RefObject,
   useEffect,
   useState,
 } from "react";
@@ -13,23 +15,27 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+import Link from "next/link";
+
 import db from "@/data/db.json";
 
 import styles from "@/styles/components/category-list.module.scss";
-import Link from "next/link";
 
 type CategoryListItem = {
   category: string;
   iconFilename?: string;
   selected?: boolean;
   className?: string;
+  closerRef?: RefObject<HTMLButtonElement>;
 };
 
-type CategoryList = {
+export type CategoryList = {
   list: string[];
   iconLink: {
     [key: string]: string;
   };
+  closerRef?: RefObject<HTMLButtonElement>;
 };
 
 type PostListItem = {
@@ -41,6 +47,7 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
   category,
   iconFilename,
   className,
+  closerRef,
 }) => {
   const [postList, setPostList] = useState<PostListItem[]>([]);
 
@@ -59,6 +66,10 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
     setPostList(pl);
   };
 
+  const onClickLink: MouseEventHandler<HTMLAnchorElement> = (event) => {
+    closerRef?.current?.click();
+  };
+
   return (
     <li className={`${styles["category-item"]} ${className || ""}`}>
       <Accordion type="single" collapsible className={styles["accordion"]}>
@@ -73,12 +84,15 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
               alt={category}
               width={16}
               height={16}
+              style={{ width: 16, height: 16 }}
             />
             <label className={styles["name"]}>{category}</label>
           </AccordionTrigger>
           {postList.map(({ id, title }) => (
             <AccordionContent className={styles["content"]} key={id}>
-              <Link href={`/${category}/${id}`}>{title}</Link>
+              <Link href={`/${category}/${id}`} onClick={onClickLink}>
+                {title}
+              </Link>
             </AccordionContent>
           ))}
         </AccordionItem>
@@ -87,7 +101,11 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
   );
 };
 
-const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
+const CategoryList: FunctionComponent<CategoryList> = ({
+  list,
+  iconLink,
+  closerRef,
+}) => {
   list = list.sort((prev, next) => {
     if (next < prev) {
       return 1;
@@ -129,6 +147,7 @@ const CategoryList: FunctionComponent<CategoryList> = ({ list, iconLink }) => {
           category={category}
           iconFilename={`/icons/${iconLink[category]}`}
           key={category}
+          closerRef={closerRef}
         />
       ))}
     </ul>

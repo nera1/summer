@@ -37,6 +37,7 @@ const RecentPostListItem: FunctionComponent<
             src={`/icons/${iconLink[category || "markdown.svg"]}`}
             width={18}
             height={18}
+            style={{ width: 18, height: 18 }}
             alt={category || "nothing"}
           />
           <span className={styles["category-name"]}>{category}</span>

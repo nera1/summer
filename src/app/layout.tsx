@@ -10,11 +10,12 @@ import db from "@/data/db.json";
 import "@/styles/globals.scss";
 import styles from "@/styles/home.module.scss";
 
-export const dynamic = "force-static";
-
 export const metadata: Metadata = {
-  title: "Nera",
-  description: "Nera",
+  title: "Sumr",
+  description: "Sumr",
+  icons: {
+    icon: "/favicon/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -22,7 +23,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const categories = db.categories;
+  const categoryList = Object.keys(db.categories);
   const link: {
     [key: string]: string;
   } = JSON.parse(
@@ -34,11 +35,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={styles["home"]}>
-        <Header />
+        <Header list={categoryList} iconLink={link} />
         <main>
           <aside className={styles["category"]}>
-            <nav>
-              <CategoryList list={Object.keys(categories)} iconLink={link} />
+            <nav className={styles["category-list-wrapper"]}>
+              <CategoryList list={categoryList} iconLink={link} />
             </nav>
           </aside>
           <div className={styles["container"]}>{children}</div>

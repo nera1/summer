@@ -1,16 +1,12 @@
 @use "../variables" as var;
 
 .category-list {
-  padding: 0px 16px;
-  padding-top: 16px;
+  padding: 0;
   margin: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   width: 100%;
-  position: sticky;
-  top: calc(var.$header-height + var.$main-top-padding);
-  width: var.$category-list-item-width;
   gap: 10px;
 }
 
@@ -71,15 +67,9 @@
 }
 
 @media (max-width: var.$bp-x-small) {
-  .category-list {
-    display: none;
-  }
 }
 
 @media (min-width: calc(var.$bp-x-small + 1px)) and (max-width: var.$bp-small) {
-  .category-list {
-    display: none;
-  }
 }
 
 @media (min-width: calc(var.$bp-small + 1px)) and (max-width: var.$bp-medium) {

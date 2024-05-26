@@ -1,0 +1,17 @@
+@use "../variables" as var;
+
+.trigger {
+  display: none;
+}
+
+.closer {
+  display: none;
+}
+
+.content {
+  width: var.$category-list-item-width !important;
+  height: calc(100vh - var.$header-height) !important;
+  top: var.$header-height !important;
+  background-color: var.$bg-color !important;
+  border-color: var.$bg-color-lighter;
+}
