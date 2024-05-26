@@ -72,8 +72,11 @@
       border-radius: 50%;
     }
   }
-  & .title {
+  & .title-link {
+    width: fit-content;
     font-size: 24px;
+  }
+  & .title {
     line-height: 1;
     &:hover {
       text-decoration: underline;
@@ -117,6 +120,9 @@
   .category {
     display: none;
   }
+  .title-link {
+    width: 100%;
+  }
 }
 
 @media (min-width: calc(var.$bp-x-small + 1px)) and (max-width: var.$bp-small) {
@@ -127,12 +133,18 @@
   .category {
     display: none;
   }
+  .title-link {
+    width: 100%;
+  }
 }
 
 @media (min-width: calc(var.$bp-small + 1px)) and (max-width: var.$bp-medium) {
   .container {
     padding-left: var.$reponsive-small-horizontal-padding;
     padding-right: var.$reponsive-small-horizontal-padding;
+  }
+  .title-link {
+    width: 100%;
   }
 }
 

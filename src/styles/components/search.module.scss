@@ -20,6 +20,7 @@
     border: 0;
     height: 100%;
     outline: none;
+    width: var.$search-width;
   }
   & > svg {
     fill: var.$color-xx-darker;
