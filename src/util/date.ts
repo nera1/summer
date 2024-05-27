@@ -1,9 +1,12 @@
-export function createDateString(date: string) {
-  const d = new Date(date);
-  const now = new Date();
-  if (d.getFullYear() === now.getFullYear()) {
-    return `${d.getMonth() + 1}.${d.getDate()}`;
-  } else {
-    return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
-  }
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import utc from "dayjs/plugin/utc";
+import "dayjs/locale/ko";
+
+dayjs.extend(utc);
+dayjs.locale("ko");
+dayjs.extend(relativeTime);
+
+export function dateString(date: string) {
+  return dayjs().to(dayjs(date).utc().format("YYYY-MM-DD HH:mm:ss"));
 }

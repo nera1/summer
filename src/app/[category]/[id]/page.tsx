@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import { join } from "path";
+
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import utc from "dayjs/plugin/utc";
@@ -19,6 +20,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import Footer from "@/components/footer/footer";
 
 import db from "@/data/db.json";
 
@@ -94,6 +96,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         className={`${styles["post"]} ${styles["markdown"]}`}
         dangerouslySetInnerHTML={{ __html: value }}
       ></div>
+      <Footer />
     </>
   );
 }

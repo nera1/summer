@@ -1,0 +1,60 @@
+@use "../variables" as var;
+
+.footer {
+  margin-top: var.$footer-margin-top;
+  display: flex;
+  justify-content: center;
+  height: var.$footer-height;
+  & > .container {
+    width: 100%;
+    height: 100%;
+    & > .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.footer-list-item {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  & > a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var.$color-xx-darker;
+    font-size: 14px;
+    & > .icon {
+      width: var.$footer-icon-width;
+      height: var.$footer-icon-width;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      fill: var.$color-xx-darker;
+      &.empty {
+        display: none;
+      }
+      & > svg {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: var.$bp-x-small) {
+}
+
+@media (min-width: calc(var.$bp-x-small + 1px)) and (max-width: var.$bp-small) {
+}
+
+@media (min-width: calc(var.$bp-small + 1px)) and (max-width: var.$bp-medium) {
+}
+
+@media (min-width: calc(var.$bp-medium + 1px)) and (max-width: var.$bp-large) {
+}
+
+@media (min-width: var.$bp-large) {
+}

@@ -8,8 +8,10 @@ import db from "@/data/db.json";
 import iconLink from "@/data/icon_link.json";
 
 import styles from "@/styles/home.module.scss";
-import { createDateString } from "@/util";
+
 import Tag from "@/components/icon/tag";
+
+import { createDateString, dateString } from "@/util";
 
 type RecentPostListItem = {
   filename: string;
@@ -43,7 +45,7 @@ const RecentPostListItem: FunctionComponent<
           <span className={styles["category-name"]}>{category}</span>
         </span>
         <span className={styles["date"]}>
-          <span className={styles["created"]}>{createDateString(created)}</span>
+          <span className={styles["created"]}>{dateString(created)}</span>
         </span>
       </span>
       <Link href={`/${category}/${id}`} className={styles["title-link"]}>

@@ -8,6 +8,7 @@ import CategoryList from "@/components/category-list/category-list";
 import db from "@/data/db.json";
 
 import "@/styles/globals.scss";
+
 import styles from "@/styles/home.module.scss";
 
 export const metadata: Metadata = {
