@@ -13,7 +13,7 @@ import Tag from "@/components/icon/tag";
 
 import { dateString } from "@/util";
 
-type RecentPostListItem = {
+export type RecentPostListItemProps = {
   filename: string;
   created: string;
   modified: string;
@@ -24,10 +24,10 @@ type RecentPostListItem = {
   id: string;
 };
 
-type IconLink = { [key: string]: string };
+export type IconLink = { [key: string]: string };
 
-const RecentPostListItem: FunctionComponent<
-  RecentPostListItem & { iconLink: IconLink }
+export const RecentPostListItem: FunctionComponent<
+  RecentPostListItemProps & { iconLink: IconLink }
 > = (props) => {
   const { id, title, category, iconLink, created, tags } = props;
   return (
@@ -64,8 +64,9 @@ const RecentPostListItem: FunctionComponent<
 };
 
 export default function RecentPostList() {
-  const { dictionary }: { dictionary: { [key: string]: RecentPostListItem } } =
-    db;
+  const {
+    dictionary,
+  }: { dictionary: { [key: string]: RecentPostListItemProps } } = db;
 
   const [list, setList] = useState<string[]>([]);
 

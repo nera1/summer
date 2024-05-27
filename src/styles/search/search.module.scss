@@ -1,0 +1,14 @@
+@use "../variables" as var;
+
+.head {
+  margin: 0;
+  padding: 0;
+  color: var.$color-darker;
+  font-size: large;
+  margin-bottom: 16px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+}

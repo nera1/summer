@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  FunctionComponent,
-  MouseEventHandler,
-  useRef,
-  createContext,
-  SetStateAction,
-  Dispatch,
-  useState,
-  useContext,
-} from "react";
+import { FunctionComponent, MouseEventHandler, useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

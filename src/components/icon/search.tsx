@@ -1,10 +1,15 @@
-const Search = () => {
+import { FunctionComponent } from "react";
+
+import { SvgIcon } from "@/types";
+
+const Search: FunctionComponent<SvgIcon> = ({ onClick }) => {
   return (
     <svg
       width="18"
       height="18"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={onClick}
     >
       <path
         fillRule="evenodd"
