@@ -1,98 +1,102 @@
 "use client";
 
-// import { useEffect, useState } from "react";
-// import { useSearchParams } from "next/navigation";
-
-import {
-  RecentPostListItem,
-  RecentPostListItemProps,
-  IconLink as IconLinkType,
-} from "../page";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
 import db from "@/data/db.json";
-//import iconLink from "@/data/icon_link.json";
 
-import { title } from "@/types";
+import iconLink from "@/data/icon_link.json";
+
+import { IconLink, Post, title } from "@/types";
+
+import { RecentPostListItem } from "@/components/recent-post-list-item/recent-post-list-item";
 
 import styles from "@/styles/search/search.module.scss";
 
-type SearchPostListItem = RecentPostListItemProps;
+const LIMIT = 10;
 
-// const LIMIT = 10;
+function getSearchList({
+  list,
+  titles,
+  search,
+  offset,
+  dictionary,
+}: {
+  list: Post[];
+  titles: title[];
+  search: string;
+  offset: number;
+  dictionary: { [key: string]: Post };
+}): { list: Post[]; offset: number } {
+  const newList: Post[] = [];
+  let newOffset = offset;
+  for (let i = offset + 1; i < titles.length; i++) {
+    if (!titles.length) {
+      break;
+    }
 
-// function getSearchList({
-//   list,
-//   titles,
-//   search,
-//   offset,
-//   dictionary,
-// }: {
-//   list: SearchPostListItem[];
-//   titles: title[];
-//   search: string;
-//   offset: number;
-//   dictionary: { [key: string]: SearchPostListItem };
-// }): { list: SearchPostListItem[]; offset: number } {
-//   const newList: SearchPostListItem[] = [];
-//   let newOffset = offset;
-//   for (let i = offset + 1; i < titles.length; i++) {
-//     if (!titles.length) {
-//       break;
-//     }
+    const { title, id } = titles[i];
 
-//     const { title, id } = titles[i];
+    if (newList.length >= LIMIT) {
+      break;
+    }
 
-//     if (newList.length >= LIMIT) {
-//       break;
-//     }
+    if (title.toLocaleLowerCase().includes(search)) {
+      newList.push(dictionary[id]);
+      newOffset = i;
+    }
+  }
+  return {
+    list: list.concat(newList),
+    offset: newOffset,
+  };
+}
 
-//     if (title.toLocaleLowerCase().includes(search)) {
-//       newList.push(dictionary[id]);
-//       newOffset = i;
-//     }
-//   }
-//   return {
-//     list: list.concat(newList),
-//     offset: newOffset,
-//   };
-// }
+function SearchContents() {
+  const query = useSearchParams();
+  const search = String(query.get("q") || "").toLowerCase();
+  const iLink: IconLink = iconLink;
 
-export default function Page() {
-  const {
-    dictionary,
-    titles,
-  }: {
-    dictionary: { [key: string]: SearchPostListItem };
-    titles: title[];
-  } = db;
+  const { titles, dictionary } = db;
 
-  // const query = useSearchParams();
-  // const search = String(query.get("q") || "").toLowerCase();
-  // const iLink: IconLinkType = iconLink;
+  const [info, setInfo] = useState<{
+    list: Post[];
+    offset: number;
+  }>({ list: [], offset: -1 });
 
-  // const [info, setInfo] = useState<{
-  //   list: SearchPostListItem[];
-  //   offset: number;
-  // }>({ list: [], offset: -1 });
+  useEffect(() => {
+    setInfo(getSearchList({ ...info, titles, search, dictionary }));
+  }, []);
 
-  // useEffect(() => {
-  //   setInfo(getSearchList({ ...info, titles, search, dictionary }));
-  // }, []);
-
-  // useEffect(() => {
-  //   setInfo(
-  //     getSearchList({ list: [], offset: -1, titles, search, dictionary })
-  //   );
-  // }, [search]);
+  useEffect(() => {
+    setInfo(
+      getSearchList({ list: [], offset: -1, titles, search, dictionary })
+    );
+  }, [search, titles, dictionary]);
 
   return (
     <>
-      <h1 className={styles["head"]}>{`"${""}"에 대한 검색 결과`}</h1>
+      <h1 className={styles["head"]}>{`"${search}"에 대한 검색 결과`}</h1>
       <ul className={styles["list"]}>
-        {/* {info.list.map((item) => (
+        {info.list.map((item) => (
           <RecentPostListItem key={item.id} {...item} iconLink={iLink} />
-        ))} */}
+        ))}
       </ul>
     </>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense
+      fallback={
+        <div className={styles["spinner-wrapper"]}>
+          <Loader2 className="animate-spin" />
+        </div>
+      }
+    >
+      <SearchContents />
+    </Suspense>
   );
 }
