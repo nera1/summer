@@ -11,7 +11,7 @@ import styles from "@/styles/home.module.scss";
 
 import Tag from "@/components/icon/tag";
 
-import { createDateString, dateString } from "@/util";
+import { dateString } from "@/util";
 
 type RecentPostListItem = {
   filename: string;
