@@ -1,5 +1,7 @@
-import { Mail } from "../icon";
 import { FunctionComponent, ReactNode } from "react";
+import Image from "next/image";
+
+import { Mail } from "../icon";
 
 import styles from "@/styles/components/footer.module.scss";
 
@@ -33,6 +35,20 @@ const Footer = () => {
         <ul className={styles["list"]}>
           <FooterItem Icon={<Mail />} href="mailto:nera4936@gmail.com">
             nera4936@gmail.com
+          </FooterItem>
+          <FooterItem
+            Icon={
+              <Image
+                src={`/icons/github.svg`}
+                alt={"github"}
+                width="16"
+                height="15"
+                style={{ width: 16, height: 15 }}
+              />
+            }
+            href="https://github.com/nera1"
+          >
+            Nera
           </FooterItem>
         </ul>
       </div>
