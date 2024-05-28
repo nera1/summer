@@ -39,15 +39,14 @@ function getRecentPostList({
   let newOffset = offset;
 
   for (let i = offset + 1; i < postIdList.length; i++) {
+    newOffset = i;
     if (!postIdList.length) {
       break;
     }
     if (newList.length >= limit) {
       break;
     }
-
     newList.push(dictionary[postIdList[i]]);
-    newOffset = i;
   }
 
   return {
@@ -84,7 +83,7 @@ function RecentPostList() {
     );
   }, 1000);
 
-  const nexter = useCallback(throttler, []);
+  const nexter = useCallback(throttler, [throttler]);
 
   useEffect(() => {
     setInfo((prev) =>
@@ -95,7 +94,7 @@ function RecentPostList() {
         postIdList: list,
       })
     );
-  }, []);
+  }, [totalList, dictionary, list]);
 
   const next = () => {
     nexter();

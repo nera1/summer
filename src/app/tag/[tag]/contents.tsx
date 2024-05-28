@@ -81,7 +81,7 @@ function TagPostList({ tag }: { tag: string }) {
     );
   }, 1000);
 
-  const nexter = useCallback(throttler, []);
+  const nexter = useCallback(throttler, [throttler]);
 
   const next = () => {
     nexter();
@@ -102,19 +102,7 @@ function TagPostList({ tag }: { tag: string }) {
       })
     );
     window?.scrollTo({ top: 0, behavior: "instant" });
-  }, []);
-
-  useEffect(() => {
-    setInfo((prev) =>
-      getTagPostList({
-        list: [],
-        offset: -1,
-        dictionary,
-        postIdList,
-        limit: tagPostList,
-      })
-    );
-  }, [postIdList, dictionary]);
+  }, [postIdList, dictionary, tagPostList]);
 
   return (
     <>

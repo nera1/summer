@@ -4,7 +4,7 @@ import Contents from "./contents";
 export function generateStaticParams() {
   const tags: { [key: string]: string[] } = db.tags;
   const params: { tag: string }[] = Object.keys(tags).map((item: string) => ({
-    tag: item,
+    tag: decodeURIComponent(item),
   }));
   return params;
 }

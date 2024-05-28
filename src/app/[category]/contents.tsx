@@ -48,7 +48,6 @@ function getCategoryPostList({
     if (newList.length >= limit) {
       break;
     }
-
     newList.push(dictionary[postIdList[i]]);
     newOffset = i;
   }
@@ -92,7 +91,7 @@ function CategoryPostListContents({ category }: CategoryPostListContents) {
     );
   }, 1000);
 
-  const nexter = useCallback(throttler, []);
+  const nexter = useCallback(throttler, [throttler]);
 
   const next = () => {
     nexter();
@@ -107,19 +106,7 @@ function CategoryPostListContents({ category }: CategoryPostListContents) {
         limit: categoryPostList,
       })
     );
-  }, []);
-
-  useEffect(() => {
-    setInfo((prev) =>
-      getCategoryPostList({
-        list: [],
-        offset: -1,
-        dictionary,
-        postIdList,
-        limit: categoryPostList,
-      })
-    );
-  }, [postIdList, dictionary]);
+  }, [postIdList, dictionary, categoryPostList]);
 
   return (
     <>

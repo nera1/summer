@@ -37,6 +37,7 @@ function getSearchList({
   const newList: Post[] = [];
   let newOffset = offset;
   for (let i = offset + 1; i < titles.length; i++) {
+    newOffset = i;
     if (!titles.length) {
       break;
     }
@@ -49,7 +50,6 @@ function getSearchList({
 
     if (title.toLocaleLowerCase().includes(search)) {
       newList.push(dictionary[id]);
-      newOffset = i;
     }
   }
   return {
@@ -81,7 +81,13 @@ function SearchContents() {
     );
   }, 1000);
 
-  const nexter = useCallback(throttler, []);
+  const nexter = useCallback(throttler, [
+    throttler,
+    titles,
+    search,
+    dictionary,
+    searchPostList,
+  ]);
 
   const next = () => {
     nexter();
@@ -95,18 +101,6 @@ function SearchContents() {
   useEffect(() => {
     setInfo((prev) =>
       getSearchList({
-        ...prev,
-        titles,
-        search,
-        dictionary,
-        limit: searchPostList,
-      })
-    );
-  }, []);
-
-  useEffect(() => {
-    setInfo((prev) =>
-      getSearchList({
         list: [],
         offset: -1,
         titles,
@@ -115,7 +109,7 @@ function SearchContents() {
         limit: searchPostList,
       })
     );
-  }, [search, titles, dictionary]);
+  }, [search, titles, dictionary, searchPostList]);
 
   return (
     <>

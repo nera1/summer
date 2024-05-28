@@ -1,1 +1,1 @@
-export type IconLink = { [key: string]: string };
+export type IconLink = { [key: string]: string | null };
