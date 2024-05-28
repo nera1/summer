@@ -1,82 +1,82 @@
 "use client";
 
 import { Suspense, useCallback, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { throttle } from "lodash";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import db from "@/data/db.json";
-
-import iconLink from "@/data/icon_link.json";
-
-import { IconLink, Post, title } from "@/types";
-
-import { RecentPostListItem } from "@/components/recent-post-list-item/recent-post-list-item";
-import ScrollTop from "@/components/scroll-top/scroll-top";
 import Spinner from "@/components/spinner/spinner";
+import { RecentPostListItem } from "@/components/recent-post-list-item/recent-post-list-item";
 
+import { IconLink, Post } from "@/types";
+
+import db from "@/data/db.json";
+import iconLink from "@/data/icon_link.json";
 import config from "@/config/config.json";
 
-import styles from "@/styles/search/search.module.scss";
+import styles from "@/styles/tag/tag.module.scss";
 
-function getSearchList({
+type Contents = {
+  tag: string;
+};
+
+function getTagPostList({
   list,
-  titles,
-  search,
+  postIdList,
   offset,
   dictionary,
   limit,
 }: {
   list: Post[];
-  titles: title[];
-  search: string;
+  postIdList: string[];
   offset: number;
   dictionary: { [key: string]: Post };
   limit: number;
 }): { list: Post[]; offset: number } {
   const newList: Post[] = [];
   let newOffset = offset;
-  for (let i = offset + 1; i < titles.length; i++) {
-    if (!titles.length) {
+
+  for (let i = offset + 1; i < postIdList.length; i++) {
+    if (!postIdList.length) {
       break;
     }
-
-    const { title, id } = titles[i];
-
     if (newList.length >= limit) {
       break;
     }
 
-    if (title.toLocaleLowerCase().includes(search)) {
-      newList.push(dictionary[id]);
-      newOffset = i;
-    }
+    newList.push(dictionary[postIdList[i]]);
+    newOffset = i;
   }
+
   return {
     list: list.concat(newList),
     offset: newOffset,
   };
 }
 
-function SearchContents() {
-  const query = useSearchParams();
-  const search = String(query.get("q") || "").toLowerCase();
+function TagPostList({ tag }: { tag: string }) {
   const iLink: IconLink = iconLink;
 
-  const { titles, dictionary } = db;
+  const {
+    limit: { tagPostList },
+  } = config;
 
   const {
-    limit: { searchPostList },
-  } = config;
+    dictionary,
+    tags,
+  }: {
+    dictionary: { [key: string]: Post };
+    tags: { [key: string]: string[] };
+  } = db;
+
+  const postIdList: string[] = tags[tag];
 
   const throttler = throttle(() => {
     setInfo((prev) =>
-      getSearchList({
+      getTagPostList({
         ...prev,
-        titles,
-        search,
         dictionary,
-        limit: searchPostList,
+        postIdList,
+        limit: tagPostList,
       })
     );
   }, 1000);
@@ -94,36 +94,37 @@ function SearchContents() {
 
   useEffect(() => {
     setInfo((prev) =>
-      getSearchList({
+      getTagPostList({
         ...prev,
-        titles,
-        search,
         dictionary,
-        limit: searchPostList,
+        postIdList,
+        limit: tagPostList,
       })
     );
+    window?.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
   useEffect(() => {
     setInfo((prev) =>
-      getSearchList({
+      getTagPostList({
         list: [],
         offset: -1,
-        titles,
-        search,
         dictionary,
-        limit: searchPostList,
+        postIdList,
+        limit: tagPostList,
       })
     );
-  }, [search, titles, dictionary]);
+  }, [postIdList, dictionary]);
 
   return (
     <>
-      <h1 className={styles["head"]}>{`"${search}" 에 대한 검색 결과`}</h1>
+      <h1 className={styles["head"]}>{`"${decodeURIComponent(
+        tag
+      )}" 태그의 포스트`}</h1>
       <InfiniteScroll
-        dataLength={info.list.length}
-        hasMore={info.offset < titles.length - 1}
         next={next}
+        dataLength={info.list.length}
+        hasMore={info.list.length < postIdList.length}
         loader={<Spinner />}
       >
         <ul className={styles["list"]}>
@@ -132,15 +133,14 @@ function SearchContents() {
           ))}
         </ul>
       </InfiniteScroll>
-      <ScrollTop />
     </>
   );
 }
 
-export default function Page() {
+export default function Contents({ tag }: Contents) {
   return (
     <Suspense fallback={<Spinner />}>
-      <SearchContents />
+      <TagPostList tag={tag} />
     </Suspense>
   );
 }

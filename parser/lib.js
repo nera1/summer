@@ -18,7 +18,8 @@ function createTagMap(array) {
   for (const item of array) {
     const tagList = item["tags"];
     if (tagList !== undefined) {
-      for (const tag of tagList) {
+      for (let tag of tagList) {
+        tag = encodeURIComponent(tag);
         const id = item["id"];
         if (tagMap[tag] == undefined) {
           tagMap[tag] = [id];

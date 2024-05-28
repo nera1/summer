@@ -18,10 +18,11 @@ export const RecentPostListItem: FunctionComponent<RecentPostListItemProps> = (
   props
 ) => {
   const { id, title, category, iconLink, created, tags } = props;
+
   return (
     <li className={styles["recent-post-list-item"]}>
       <span className={styles["top"]}>
-        <span className={styles["category"]}>
+        <Link className={styles["category"]} href={`/${category}`}>
           <Image
             className={styles["icon"]}
             src={`/icons/${iconLink[category || "markdown.svg"]}`}
@@ -31,7 +32,7 @@ export const RecentPostListItem: FunctionComponent<RecentPostListItemProps> = (
             alt={category || "nothing"}
           />
           <span className={styles["category-name"]}>{category}</span>
-        </span>
+        </Link>
         <span className={styles["date"]}>
           <span className={styles["created"]}>{dateString(created)}</span>
         </span>
@@ -42,7 +43,11 @@ export const RecentPostListItem: FunctionComponent<RecentPostListItemProps> = (
       <span className={styles["tag"]}>
         <TagIcon />
         {tags.map((tag) => (
-          <Link className={styles["tag-badge"]} href={`/`} key={`${id}_${tag}`}>
+          <Link
+            className={styles["tag-badge"]}
+            href={`/tag/${tag}`}
+            key={`${id}_${tag}`}
+          >
             {tag}
           </Link>
         ))}

@@ -29,6 +29,12 @@
     & * {
       color: var.$color-x-darker;
     }
+    & .category {
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
     & .title {
       color: var.$color-darker;
     }
@@ -626,12 +632,12 @@
 }
 
 .markdown table tr {
-  background-color: #0d1117;
+  background-color: var.$bg-color;
   border-top: 1px solid #21262d;
 }
 
 .markdown table tr:nth-child(2n) {
-  background-color: #161b22;
+  background-color: lighten(var.$bg-color, 5%);
 }
 
 .markdown table img {

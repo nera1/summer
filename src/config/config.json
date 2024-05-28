@@ -1,0 +1,8 @@
+{
+  "limit": {
+    "totalList": 10,
+    "tagPostList": 10,
+    "categoryPostList": 10,
+    "searchPostList": 10
+  }
+}

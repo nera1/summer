@@ -10,6 +10,7 @@ import { remark } from "remark";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
 
 import {
   Breadcrumb,
@@ -20,7 +21,9 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+
 import Footer from "@/components/footer/footer";
+import ScrollTop from "@/components/scroll-top/scroll-top";
 
 import db from "@/data/db.json";
 
@@ -61,6 +64,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     .toString()
     .replace(yamlPattern, "");
   const { value } = await remark()
+    .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypePrettyCode)
     .use(rehypeStringify)
@@ -70,14 +74,8 @@ export default async function Page({ params }: { params: { id: string } }) {
       <div className={styles["post-info"]}>
         <Breadcrumb className={styles["breadcrumb"]}>
           <BreadcrumbList>
-            {/* <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
-        </BreadcrumbItem> */}
-            {/* <BreadcrumbItem>
-          <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
-        </BreadcrumbItem> */}
             <BreadcrumbItem className={styles["category"]}>
-              <BreadcrumbPage>{category}</BreadcrumbPage>
+              <BreadcrumbLink href={`/${category}`}>{category}</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
@@ -97,6 +95,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         dangerouslySetInnerHTML={{ __html: value }}
       ></div>
       <Footer />
+      <ScrollTop />
     </>
   );
 }
