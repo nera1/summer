@@ -58,17 +58,20 @@ export default async function Page({ params }: { params: { id: string } }) {
   const { title, category, created, modified } = dictionary[params.id];
 
   const yamlPattern = /^---[\s\S]+?---/;
+
   const file = readFileSync(
     join(process.cwd(), "src", "md", dictionary[params.id]?.filename)
   )
     .toString()
     .replace(yamlPattern, "");
+
   const { value } = await remark()
     .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypePrettyCode)
     .use(rehypeStringify)
     .process(file);
+
   return (
     <>
       <div className={styles["post-info"]}>
