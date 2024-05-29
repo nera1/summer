@@ -54,6 +54,7 @@ function createCategoryMap(array) {
     if (category) {
       const id = item["id"];
       category = category.toLowerCase();
+      category = encodeURIComponent(category);
       if (categoryMap[category]) {
         categoryMap[category].push(id);
       } else {

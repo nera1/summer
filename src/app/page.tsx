@@ -14,6 +14,8 @@ import { Post } from "@/types/post";
 
 import styles from "@/styles/home.module.scss";
 
+import { IconLink as ILink } from "@/types";
+
 export type IconLink = { [key: string]: string };
 
 export type RecentPostListItemProps = {
@@ -39,7 +41,6 @@ function getRecentPostList({
   let newOffset = offset;
 
   for (let i = offset + 1; i < postIdList.length; i++) {
-    newOffset = i;
     if (!postIdList.length) {
       break;
     }
@@ -47,6 +48,7 @@ function getRecentPostList({
       break;
     }
     newList.push(dictionary[postIdList[i]]);
+    newOffset = i;
   }
 
   return {
@@ -65,7 +67,7 @@ function RecentPostList() {
     limit: { totalList },
   } = config;
 
-  const iLink: IconLink = iconLink;
+  const iLink: ILink = iconLink;
 
   const [info, setInfo] = useState<{
     list: Post[];

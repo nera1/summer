@@ -14,5 +14,5 @@ export default function Page({
 }: {
   params: { category: string };
 }) {
-  return <Contents category={category} />;
+  return <Contents category={decodeURIComponent(category)} />;
 }
