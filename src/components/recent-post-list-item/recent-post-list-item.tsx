@@ -25,11 +25,13 @@ export const RecentPostListItem: FunctionComponent<RecentPostListItemProps> = (
         <Link className={styles["category"]} href={`/${category}`}>
           <Image
             className={styles["icon"]}
-            src={`/icons/${iconLink[category || "markdown.svg"]}`}
+            src={`/icons/${
+              iconLink[encodeURIComponent(category || "") || "default"]
+            }`}
             width={18}
             height={18}
             style={{ width: 18, height: 18 }}
-            alt={category || "nothing"}
+            alt={category || ""}
           />
           <span className={styles["category-name"]}>{category}</span>
         </Link>

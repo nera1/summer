@@ -48,7 +48,7 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
   className,
   closerRef,
 }) => {
-  category = decodeURIComponent(category);
+  const originalCategoryName = decodeURIComponent(category);
 
   const [postList, setPostList] = useState<PostListItem[]>([]);
 
@@ -82,16 +82,19 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
             <Image
               className={styles["icon"]}
               src={iconFilename || ""}
-              alt={category}
+              alt={originalCategoryName}
               width={16}
               height={16}
               style={{ width: 16, height: 16 }}
             />
-            <label className={styles["name"]}>{category}</label>
+            <label className={styles["name"]}>{originalCategoryName}</label>
           </AccordionTrigger>
           {postList.map(({ id, title }) => (
             <AccordionContent className={styles["content"]} key={id}>
-              <Link href={`/${category}/${id}`} onClick={onClickLink}>
+              <Link
+                href={`/${originalCategoryName}/${id}`}
+                onClick={onClickLink}
+              >
                 {title}
               </Link>
             </AccordionContent>

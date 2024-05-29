@@ -7,6 +7,8 @@ const { categories } = require("../src/data/db.json");
 const linkDestPath = path.join(process.cwd(), "src", "data");
 const linkFilename = "icon_link.json";
 
+const defaultIcon = "cube.svg";
+
 const categoryList = Object.keys(categories);
 
 const categoryIconLink = {};
@@ -25,8 +27,10 @@ for (const category of categoryList) {
   const iconfilename = closest(category, iconFilenameList);
   const dist = distance(category, iconfilename);
   categoryIconLink[category] =
-    dist >= category.length / 2 ? null : iconfilePairMap[iconfilename];
+    dist >= category.length / 2 ? defaultIcon : iconfilePairMap[iconfilename];
 }
+
+categoryIconLink["default"] = defaultIcon;
 
 fs.writeFileSync(
   path.join(linkDestPath, linkFilename),

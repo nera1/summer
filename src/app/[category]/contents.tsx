@@ -59,6 +59,8 @@ function getCategoryPostList({
 }
 
 function CategoryPostListContents({ category }: CategoryPostListContents) {
+  const categoryOriginalName = decodeURIComponent(category);
+
   const iLink: IconLink = iconLink;
 
   const {
@@ -110,7 +112,9 @@ function CategoryPostListContents({ category }: CategoryPostListContents) {
 
   return (
     <>
-      <h1 className={styles["head"]}>{`"${category}" 카테고리의 포스트`}</h1>
+      <h1
+        className={styles["head"]}
+      >{`"${categoryOriginalName}" 카테고리의 포스트`}</h1>
       <InfiniteScroll
         dataLength={info.list.length}
         next={next}
