@@ -45,14 +45,18 @@ export function generateStaticParams() {
     for (const id of ids) {
       params.push({
         id,
-        category,
+        category: decodeURIComponent(category),
       });
     }
   }
   return params;
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: { id: string; category: string };
+}) {
   const { dictionary }: any = db;
 
   const { title, category, created, modified } = dictionary[params.id];

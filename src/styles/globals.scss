@@ -104,3 +104,7 @@ body {
     background-color: var.$bg-color-x-lighter;
   }
 }
+
+.infinite-scroll-component {
+  overflow-x: hidden !important;
+}
