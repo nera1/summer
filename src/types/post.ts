@@ -5,6 +5,6 @@ export type Post = {
   tags: string[];
   category?: string;
   author?: string;
-  title?: string;
+  title: string;
   id: string;
 };

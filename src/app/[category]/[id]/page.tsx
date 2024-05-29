@@ -14,7 +14,6 @@ import remarkGfm from "remark-gfm";
 
 import {
   Breadcrumb,
-  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,

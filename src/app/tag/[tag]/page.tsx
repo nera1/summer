@@ -15,6 +15,6 @@ export function generateStaticParams() {
   return params;
 }
 
-export default function Page({ params: { tag } }: { params: { tag: string } }) {
-  return <Contents tag={tag} />;
+export default function Page({ params }: { params: { tag: string } }) {
+  return <Contents tag={params.tag} />;
 }

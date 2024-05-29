@@ -15,10 +15,6 @@ export function generateStaticParams() {
   return params;
 }
 
-export default function Page({
-  params: { category },
-}: {
-  params: { category: string };
-}) {
-  return <Contents category={category} />;
+export default function Page({ params }: { params: { category: string } }) {
+  return <Contents category={params.category} />;
 }
