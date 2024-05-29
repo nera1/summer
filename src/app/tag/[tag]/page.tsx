@@ -3,9 +3,15 @@ import Contents from "./contents";
 
 export function generateStaticParams() {
   const tags: { [key: string]: string[] } = db.tags;
-  const params: { tag: string }[] = Object.keys(tags).map((item: string) => ({
-    tag: decodeURIComponent(item),
-  }));
+  const params: { tag: string }[] = Object.keys(tags).map((item: string) => {
+    let tagValue = item;
+    if (process.env.NODE_ENV === "production") {
+      tagValue = decodeURIComponent(tagValue);
+    }
+    return {
+      tag: tagValue,
+    };
+  });
   return params;
 }
 

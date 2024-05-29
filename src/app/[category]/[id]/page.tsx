@@ -42,10 +42,14 @@ export function generateStaticParams() {
   const params: { category: string; id: string }[] = [];
   for (const category in categories) {
     const ids: string[] = categories[category] as unknown as string[];
+    let categoryValue = category;
+    if (process.env.NODE_ENV === "production") {
+      categoryValue = decodeURIComponent(categoryValue);
+    }
     for (const id of ids) {
       params.push({
         id,
-        category: decodeURIComponent(category),
+        category: categoryValue,
       });
     }
   }
