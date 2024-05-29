@@ -2,7 +2,6 @@
 import {
   FunctionComponent,
   MouseEventHandler,
-  MutableRefObject,
   RefObject,
   useEffect,
   useState,
@@ -49,6 +48,8 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
   className,
   closerRef,
 }) => {
+  category = decodeURIComponent(category);
+
   const [postList, setPostList] = useState<PostListItem[]>([]);
 
   const onClickTrigger: MouseEventHandler<HTMLButtonElement> = (event) => {
