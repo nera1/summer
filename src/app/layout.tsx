@@ -13,7 +13,8 @@ import styles from "@/styles/home.module.scss";
 
 export const metadata: Metadata = {
   title: "Sumr",
-  description: "Sumr",
+  description:
+    "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
   icons: {
     icon: "/favicon/favicon.ico",
   },

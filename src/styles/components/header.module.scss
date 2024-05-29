@@ -18,7 +18,7 @@
       width: calc(var.$header-height - 2 * var.$header-vertical-padding);
       height: calc(var.$header-height - 2 * var.$header-vertical-padding);
       user-select: none;
-
+      box-sizing: border-box;
       &.github {
         background-color: transparent;
         border: 0.5px solid var.$bg-color-xx-lighter;
@@ -52,6 +52,7 @@
       background-color: transparent;
     }
     & > .right {
+      padding-left: 8px;
       gap: 8px;
       flex-grow: 1;
       display: flex;
