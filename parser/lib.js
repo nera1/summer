@@ -1,5 +1,7 @@
 function sortMetadataArrayByCreationDate(array) {
-  array.sort((prev, next) => prev.creation - next.creation);
+  array.sort((prev, next) => {
+    return new Date(next.created) - new Date(prev.created);
+  });
 }
 
 function createDictionaryAndIDs(array) {
