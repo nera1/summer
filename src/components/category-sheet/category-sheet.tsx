@@ -6,6 +6,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { FunctionComponent, RefObject, useRef } from "react";
 
 import CategoryList, {
@@ -33,7 +34,9 @@ const CategorySheet: FunctionComponent<CategorySheet> = ({
       ></SheetTrigger>
       <SheetClose ref={closeRef} className={styles["closer"]}></SheetClose>
       <SheetContent side="left" className={`${styles["content"]}`}>
-        <CategoryList list={list} iconLink={iconLink} closerRef={closeRef} />
+        <ScrollArea className="h-[90vh] w-[full]">
+          <CategoryList list={list} iconLink={iconLink} closerRef={closeRef} />
+        </ScrollArea>
       </SheetContent>
     </Sheet>
   );

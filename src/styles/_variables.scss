@@ -14,7 +14,7 @@ $header-horizontal-padding: 64px;
 
 $search-width: 180px;
 
-$category-list-item-width: 180px;
+$category-list-item-width: 220px;
 $content-width: 720px;
 $content-padding-left: 32px;
 
@@ -31,6 +31,6 @@ $footer-icon-width: 20px;
 $footer-margin-top: 250px;
 
 $bp-x-small: 320px;
-$bp-small: 800px;
-$bp-medium: 950px;
+$bp-small: $category-list-item-width + $content-width;
+$bp-medium: $category-list-item-width + $content-width;
 $bp-large: 1200px;

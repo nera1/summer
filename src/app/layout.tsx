@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { readFileSync } from "fs";
 import { join } from "path";
 import Header from "@/components/header/header";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 import CategoryList from "@/components/category-list/category-list";
 
@@ -41,7 +42,9 @@ export default function RootLayout({
         <main>
           <aside className={styles["category"]}>
             <nav className={styles["category-list-wrapper"]}>
-              <CategoryList list={categoryList} iconLink={link} />
+              <ScrollArea className="h-[90vh] w-[full]">
+                <CategoryList list={categoryList} iconLink={link} />
+              </ScrollArea>
             </nav>
           </aside>
           <div className={styles["container"]}>{children}</div>
