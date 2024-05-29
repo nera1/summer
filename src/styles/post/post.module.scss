@@ -44,7 +44,31 @@
     margin: 0;
     padding: 0;
   }
-  padding-bottom: 32px;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 32px 0px;
+  & > svg {
+    fill: var.$color-xx-darker;
+  }
+  & > .tag-badge {
+    font-size: medium;
+    color: var.$color-x-darker;
+    display: flex;
+    align-items: center;
+    &:hover {
+      text-decoration: underline;
+    }
+    &::after {
+      content: ",";
+    }
+    &:last-child::after {
+      content: "";
+    }
+  }
 }
 
 .markdown {

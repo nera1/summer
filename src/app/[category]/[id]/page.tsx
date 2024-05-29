@@ -27,7 +27,12 @@ import ScrollTop from "@/components/scroll-top/scroll-top";
 
 import db from "@/data/db.json";
 
+import { Post } from "@/types";
+
+import { Tag as TagIcon } from "@/components/icon";
+
 import styles from "@/styles/post/post.module.scss";
+import Link from "next/link";
 
 dayjs.extend(utc);
 dayjs.locale("ko");
@@ -61,9 +66,9 @@ export default async function Page({
 }: {
   params: { id: string; category: string };
 }) {
-  const { dictionary }: any = db;
+  const { dictionary }: { dictionary: { [key: string]: Post } } = db;
 
-  const { title, category, created, modified } = dictionary[params.id];
+  const { title, category, created, modified, tags } = dictionary[params.id];
 
   const yamlPattern = /^---[\s\S]+?---/;
 
@@ -105,6 +110,18 @@ export default async function Page({
         className={`${styles["post"]} ${styles["markdown"]}`}
         dangerouslySetInnerHTML={{ __html: value }}
       ></div>
+      <div className={styles["tags"]}>
+        <TagIcon />
+        {tags.map((tag) => (
+          <Link
+            className={styles["tag-badge"]}
+            href={`/tag/${tag}`}
+            key={`${params.id}_${tag}`}
+          >
+            {tag}
+          </Link>
+        ))}
+      </div>
       <Footer />
       <ScrollTop />
     </>

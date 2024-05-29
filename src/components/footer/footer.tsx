@@ -41,9 +41,9 @@ const Footer = () => {
               <Image
                 src={`/icons/github.svg`}
                 alt={"github"}
-                width="16"
-                height="15"
-                style={{ width: 16, height: 15 }}
+                width="18"
+                height="17"
+                style={{ width: 18, height: 17 }}
               />
             }
             href="https://github.com/nera1"
