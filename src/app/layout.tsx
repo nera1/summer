@@ -42,7 +42,7 @@ export default function RootLayout({
         <main>
           <aside className={styles["category"]}>
             <nav className={styles["category-list-wrapper"]}>
-              <ScrollArea className="h-[90vh] w-[full]">
+              <ScrollArea className="h-[70vh] w-[full]">
                 <CategoryList list={categoryList} iconLink={link} />
               </ScrollArea>
             </nav>

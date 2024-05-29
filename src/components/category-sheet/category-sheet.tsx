@@ -34,7 +34,7 @@ const CategorySheet: FunctionComponent<CategorySheet> = ({
       ></SheetTrigger>
       <SheetClose ref={closeRef} className={styles["closer"]}></SheetClose>
       <SheetContent side="left" className={`${styles["content"]}`}>
-        <ScrollArea className="h-[90vh] w-[full]">
+        <ScrollArea className="h-[70vh] w-[full]">
           <CategoryList list={list} iconLink={iconLink} closerRef={closeRef} />
         </ScrollArea>
       </SheetContent>
