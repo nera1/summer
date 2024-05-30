@@ -1,7 +1,7 @@
 ---
 title: Jakarata EE
 category: JakartaEE
-tag:
+tags:
   - java
   - jakarataEE
 ---

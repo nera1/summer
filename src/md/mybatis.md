@@ -1,7 +1,7 @@
 ---
 title: MyBatis 세팅
 category: mybatis
-tag:
+tags:
   - java
   - jakarataEE
   - mybatis
