@@ -59,6 +59,8 @@ export default async function Page({
 
   const { title, category, created, modified, tags } = dictionary[params.id];
 
+  const loweredCategory = category?.toLowerCase();
+
   const yamlPattern = /^---[\s\S]+?---/;
 
   const file = readFileSync(
@@ -80,7 +82,9 @@ export default async function Page({
         <Breadcrumb className={styles["breadcrumb"]}>
           <BreadcrumbList>
             <BreadcrumbItem className={styles["category"]}>
-              <BreadcrumbLink href={`/${category}`}>{category}</BreadcrumbLink>
+              <BreadcrumbLink href={`/${loweredCategory}`}>
+                {category}
+              </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
