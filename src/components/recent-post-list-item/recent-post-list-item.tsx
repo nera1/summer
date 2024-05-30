@@ -37,7 +37,10 @@ export const RecentPostListItem: FunctionComponent<RecentPostListItemProps> = (
           <span className={styles["category-name"]}>{category}</span>
         </Link>
         <span className={styles["date"]}>
-          <span className={styles["created"]}>{dateString(created)}</span>
+          <span className={styles["created"]}>
+            {dateString(created)}
+            {`original : ${created}`}
+          </span>
         </span>
       </span>
       <Link href={`/${category}/${id}`} className={styles["title-link"]}>
