@@ -1,10 +1,7 @@
 import { readFileSync } from "fs";
 import { join } from "path";
 
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import utc from "dayjs/plugin/utc";
-import "dayjs/locale/ko";
+import Link from "next/link";
 
 import { remark } from "remark";
 import remarkRehype from "remark-rehype";
@@ -28,18 +25,11 @@ import db from "@/data/db.json";
 
 import { Post } from "@/types";
 
+import { dateString } from "@/util";
+
 import { Tag as TagIcon } from "@/components/icon";
 
 import styles from "@/styles/post/post.module.scss";
-import Link from "next/link";
-
-dayjs.extend(utc);
-dayjs.locale("ko");
-dayjs.extend(relativeTime);
-
-function dateString(date: string) {
-  return dayjs().to(dayjs(date).utc().format("YYYY-MM-DD HH:mm:ss"));
-}
 
 export function generateStaticParams() {
   const categories: any = db.categories;
