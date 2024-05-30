@@ -4,7 +4,7 @@ import utc from "dayjs/plugin/utc";
 import "dayjs/locale/ko";
 
 dayjs.extend(utc);
-dayjs.locale("ko");
+// dayjs.locale("ko");
 dayjs.extend(relativeTime);
 
 export function dateString(date: string) {
