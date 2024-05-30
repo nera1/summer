@@ -103,7 +103,17 @@ export default async function Page({
         <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
           {title}
         </h1>
-        <span className={styles["date"]}>{dateString(created)}</span>
+        <span className={styles["date"]}>
+          {dateString(created)}
+          {`, 1. ${created}`}
+          {`, 2. ${dateString(new Date(created).toDateString())}`}
+          {`, 3. ${dateString(new Date(created).toString())}`}
+          {`, 4. ${dateString(new Date(created).toLocaleDateString())}`}
+          {`, 5. ${dateString(new Date(created).toLocaleTimeString())}`}
+          {`, 6. ${dateString(new Date(created).toLocaleString())}`}
+          {`, 7. ${dateString(new Date(created).toISOString())}`}
+          {`, 8. ${dateString(new Date(created).toUTCString())}`}
+        </span>
       </div>
       <div
         className={`${styles["post"]} ${styles["markdown"]}`}
