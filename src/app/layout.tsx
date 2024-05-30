@@ -17,7 +17,9 @@ export const metadata: Metadata = {
   description:
     "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
   icons: {
-    icon: "/favicon/favicon.ico",
+    icon: ["/favicon/favicon.ico"],
+    apple: ["/favicon/apple-touch-icon.png"],
+    shortcut: ["android-chrome-192x192.png", "android-chrome-256x256.png"],
   },
 };
 

@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import { dateString } from "@/util";
 
@@ -36,11 +37,17 @@ export const RecentPostListItem: FunctionComponent<RecentPostListItemProps> = (
           <span className={styles["category-name"]}>{category}</span>
         </Link>
         <span className={styles["date"]}>
-          <span className={styles["created"]}>{dateString(created)}</span>
+          <span className={styles["created"]}>
+            {dateString(new Date(created).toString())}
+          </span>
         </span>
       </span>
       <Link href={`/${category}/${id}`} className={styles["title-link"]}>
-        <span className={styles["title"]}>{title}</span>
+        {title ? (
+          <span className={styles["title"]}>{title}</span>
+        ) : (
+          <Skeleton className="h-full w-[150px]" />
+        )}
       </Link>
       <span className={styles["tag"]}>
         <TagIcon />
@@ -50,7 +57,7 @@ export const RecentPostListItem: FunctionComponent<RecentPostListItemProps> = (
             href={`/tag/${tag}`}
             key={`${id}_${tag}`}
           >
-            {tag}
+            {tag || <Skeleton className="h-full w-[30px]" />}
           </Link>
         ))}
       </span>
