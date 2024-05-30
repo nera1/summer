@@ -20,14 +20,16 @@ export const RecentPostListItem: FunctionComponent<RecentPostListItemProps> = (
 ) => {
   const { id, title, category, iconLink, created, tags } = props;
 
+  let lowerCategory = category?.toLocaleLowerCase();
+
   return (
     <li className={styles["recent-post-list-item"]}>
       <span className={styles["top"]}>
-        <Link className={styles["category"]} href={`/${category}`}>
+        <Link className={styles["category"]} href={`/${lowerCategory}`}>
           <Image
             className={styles["icon"]}
             src={`/icons/${
-              iconLink[encodeURIComponent(category || "") || "default"]
+              iconLink[encodeURIComponent(lowerCategory || "") || "default"]
             }`}
             width={18}
             height={18}
@@ -40,7 +42,7 @@ export const RecentPostListItem: FunctionComponent<RecentPostListItemProps> = (
           <span className={styles["created"]}>{dateString(created)}</span>
         </span>
       </span>
-      <Link href={`/${category}/${id}`} className={styles["title-link"]}>
+      <Link href={`/${lowerCategory}/${id}`} className={styles["title-link"]}>
         {title ? (
           <span className={styles["title"]}>{title}</span>
         ) : (

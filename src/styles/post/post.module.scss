@@ -1167,7 +1167,9 @@
   & > figcaption[data-rehype-pretty-code-title] {
     border-radius: 6px 6px 0 0;
     padding: 6px 16px;
-    background-color: lighten(#161b22, 5%);
+    background-color: lighten(#161b22, 2.5%);
+    font-size: small;
+    color: var.$color-darker;
     & ~ pre {
       background-color: #161b22 !important;
       border-radius: 0 0 6px 6px;

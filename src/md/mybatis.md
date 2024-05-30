@@ -45,7 +45,7 @@ pom.xml 에 추가
 
 HelloServlet 이 위치한 패키지에 mybatis 패키지를 생성하고, mybatis 패키지에 MyBatisFactory.java 파일을 생성합니다
 
-```JAVA title="MyBatisFactory.java"
+```java title="MyBatisFactory.java"
 package com.user.project.mybatis;
 
 import org.apache.ibatis.io.Resources;
@@ -197,7 +197,7 @@ resource 폴더 내에 data.xml 을 생성합니다
 
 - id 값은 겹치면 안 됩니다
 
-```JAVA title="DataDTO.java"
+```java title="DataDTO.java"
 package com.user.project.DTO;
 
 import lombok.*;
@@ -220,7 +220,7 @@ public class DataDTO {
 
 DTO를 작성하고 DAO를 작성합니다
 
-```JAVA title="DataDAO.java"
+```java title="DataDAO.java"
 package com.user.project.DAO;
 
 import com.user.project.DTO.DataDTO;
@@ -240,7 +240,7 @@ public class DataDAO {
 
 com.user.project.Controller package를 만들고 Data.java 이름의 Servlet 파일을 만듭니다, WEB-INF 폴더에 view.jsp도 작성합니다
 
-```JAVA title="Data.java"
+```java title="Data.java"
 package com.user.project.Controller;
 
 import com.user.project.DAO.DataDAO;
