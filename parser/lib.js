@@ -21,6 +21,7 @@ function createTagMap(array) {
     const tagList = item["tags"];
     if (tagList !== undefined) {
       for (let tag of tagList) {
+        tag = tag.toLowerCase();
         tag = encodeURIComponent(tag);
         const id = item["id"];
         if (tagMap[tag] == undefined) {
@@ -51,8 +52,10 @@ function createTitleList(array) {
 
 function createCategoryMap(array) {
   const categoryMap = {};
+  const categoryOriginalMap = {};
   for (const item of array) {
     let category = item["category"];
+    const categoryOriginal = category;
     if (category) {
       const id = item["id"];
       category = category.toLowerCase();
@@ -62,9 +65,17 @@ function createCategoryMap(array) {
       } else {
         categoryMap[category] = [id];
       }
+      if (!categoryOriginalMap[category]) {
+        categoryOriginalMap[category] = categoryOriginal;
+      }
     }
   }
-  return categoryMap;
+  return { categoryOriginalMap, categoryMap };
+}
+
+function yamlHeaderStringGenerator(yaml) {
+  const seperator = "---";
+  return `${seperator}\n${yaml}${seperator}\n`;
 }
 
 module.exports = {
@@ -73,4 +84,5 @@ module.exports = {
   createTagMap,
   createTitleList,
   createCategoryMap,
+  yamlHeaderStringGenerator,
 };

@@ -79,8 +79,6 @@ export default async function Page({
   return (
     <>
       <div className={styles["post-info"]}>
-        <p>SERVER BUILD : {new Date().toString()}</p>
-        <p>FILE DATE(json config) : {created}</p>
         <Breadcrumb className={styles["breadcrumb"]}>
           <BreadcrumbList>
             <BreadcrumbItem className={styles["category"]}>

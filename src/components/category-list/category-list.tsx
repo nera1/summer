@@ -19,6 +19,8 @@ import Link from "next/link";
 
 import db from "@/data/db.json";
 
+import { CategoryOrigins } from "@/types";
+
 import styles from "@/styles/components/category-list.module.scss";
 
 type CategoryListItem = {
@@ -27,6 +29,7 @@ type CategoryListItem = {
   selected?: boolean;
   className?: string;
   closerRef?: RefObject<HTMLButtonElement>;
+  categoryOrigins: CategoryOrigins;
 };
 
 export type CategoryList = {
@@ -47,6 +50,7 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
   iconFilename,
   className,
   closerRef,
+  categoryOrigins,
 }) => {
   const originalCategoryName = decodeURIComponent(category);
 
@@ -87,7 +91,9 @@ const CategoryListItem: FunctionComponent<CategoryListItem> = ({
               height={16}
               style={{ width: 16, height: 16 }}
             />
-            <label className={styles["name"]}>{originalCategoryName}</label>
+            <label className={styles["name"]}>
+              {categoryOrigins[originalCategoryName]}
+            </label>
           </AccordionTrigger>
           {postList.map(({ id, title }) => (
             <AccordionContent className={styles["content"]} key={id}>
@@ -117,7 +123,7 @@ const CategoryList: FunctionComponent<CategoryList> = ({
       return -1;
     }
   });
-
+  const categoryOrigins: CategoryOrigins = db["categoryOrigins"];
   const pathname = usePathname();
   const { category } = useParams();
   const [selected, setSelected] = useState<string>(
@@ -154,6 +160,7 @@ const CategoryList: FunctionComponent<CategoryList> = ({
       {list.map((category) => (
         <CategoryListItem
           category={category}
+          categoryOrigins={categoryOrigins}
           iconFilename={`/icons/${iconLink[category]}`}
           key={category}
           closerRef={closerRef}

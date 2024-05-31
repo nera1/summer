@@ -24,8 +24,6 @@ export const RecentPostListItem: FunctionComponent<RecentPostListItemProps> = (
 
   return (
     <li className={styles["recent-post-list-item"]}>
-      <p>CLIENT? SERVER? : {new Date().toString()}</p>
-      <p>FILE DATE(json config) : {created}</p>
       <span className={styles["top"]}>
         <Link className={styles["category"]} href={`/${lowerCategory}`}>
           <Image

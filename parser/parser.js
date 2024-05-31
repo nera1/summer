@@ -10,6 +10,7 @@ const {
   createTagMap,
   createTitleList,
   createCategoryMap,
+  yamlHeaderStringGenerator,
 } = require("./lib");
 
 const fields = ["tags", "category", "created", "modified", "author", "title"];
@@ -28,9 +29,6 @@ for (const filename of mdList) {
   const meta = {};
   meta["filename"] = filename;
   const filePath = path.join(mdSrcfolderPath, filename);
-  const stats = fs.statSync(filePath);
-  meta["created"] = stats.birthtime;
-  meta["modified"] = stats.mtime;
   const fileContent = fs.readFileSync(filePath).toString().trim();
   const match = fileContent.match(yamlPattern);
   if (match) {
@@ -44,7 +42,16 @@ for (const filename of mdList) {
     if (!meta["title"]) {
       meta["title"] = filename.split(".")[0];
     }
+    if (!meta["created"]) {
+      meta["created"] = new Date().toUTCString();
+    }
   }
+
+  const newYamlHeader = yamlHeaderStringGenerator(yaml.dump(meta));
+
+  const newFileContent = fileContent.replace(yamlPattern, newYamlHeader);
+  fs.writeFileSync(filePath, newFileContent);
+
   metadataArray.push(meta);
 }
 
@@ -56,7 +63,11 @@ db["dictionary"] = dictionary;
 db["list"] = idList;
 db["tags"] = createTagMap(metadataArray);
 db["titles"] = createTitleList(metadataArray);
-db["categories"] = createCategoryMap(metadataArray);
+
+const { categoryOriginalMap, categoryMap } = createCategoryMap(metadataArray);
+
+db["categories"] = categoryMap;
+db["categoryOrigins"] = categoryOriginalMap;
 
 fs.writeFileSync(
   path.join(dbDestPath, dbFileName),
