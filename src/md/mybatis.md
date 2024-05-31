@@ -6,8 +6,6 @@ tags:
   - jakarataEE
   - mybatis
   - oracle
-created: "2024-05-30 17:00:00"
-modified: "2024-05-31 09:42:00"
 ---
 
 # MyBatis
