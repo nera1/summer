@@ -7,7 +7,7 @@ import { throttle } from "lodash";
 
 import { RecentPostListItem } from "@/components/recent-post-list-item/recent-post-list-item";
 
-import { IconLink, Post } from "@/types";
+import { CategoryOrigins, IconLink, Post } from "@/types";
 
 import db from "@/data/db.json";
 import iconLink from "@/data/icon_link.json";
@@ -60,6 +60,7 @@ function getCategoryPostList({
 
 function CategoryPostListContents({ category }: CategoryPostListContents) {
   const categoryOriginalName = decodeURIComponent(category);
+  const categoryOrigins: CategoryOrigins = db.categoryOrigins;
 
   const iLink: IconLink = iconLink;
 
@@ -114,7 +115,7 @@ function CategoryPostListContents({ category }: CategoryPostListContents) {
     <>
       <h1
         className={styles["head"]}
-      >{`"${categoryOriginalName}" 카테고리의 포스트`}</h1>
+      >{`"${categoryOrigins[categoryOriginalName]}" 카테고리의 포스트`}</h1>
       <InfiniteScroll
         dataLength={info.list.length}
         next={next}
