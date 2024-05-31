@@ -1,11 +1,13 @@
 ---
-title: MyBatis 세팅
-category: mybatis
+filename: mybatis.md
 tags:
   - java
   - jakarataEE
   - mybatis
   - oracle
+category: mybatis
+title: MyBatis 세팅
+created: Fri, 31 May 2024 02:27:03 GMT
 ---
 
 # MyBatis

@@ -1,9 +1,11 @@
 ---
-title: Jakarata EE
-category: JakartaEE
+filename: jakartaee.md
 tags:
   - java
   - jakarataEE
+category: JakartaEE
+title: Jakarata EE
+created: Fri, 31 May 2024 02:27:03 GMT
 ---
 
 # JakartaEE

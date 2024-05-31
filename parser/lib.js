@@ -67,10 +67,16 @@ function createCategoryMap(array) {
   return categoryMap;
 }
 
+function yamlHeaderStringGenerator(yaml) {
+  const seperator = "---";
+  return `${seperator}\n${yaml}${seperator}`;
+}
+
 module.exports = {
   sortMetadataArrayByCreationDate,
   createDictionaryAndIDs,
   createTagMap,
   createTitleList,
   createCategoryMap,
+  yamlHeaderStringGenerator,
 };

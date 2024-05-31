@@ -1,10 +1,12 @@
 ---
-category: notice
-title: Notice
+filename: index.md
 tags:
   - notice
   - generateStaticParams
   - next.js
+category: notice
+title: Notice
+created: Fri, 31 May 2024 02:27:03 GMT
 ---
 
 # Notice
