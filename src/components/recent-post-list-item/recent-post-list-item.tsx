@@ -54,7 +54,7 @@ export const RecentPostListItem: FunctionComponent<RecentPostListItemProps> = (
         {tags.map((tag) => (
           <Link
             className={styles["tag-badge"]}
-            href={`/tag/${tag}`}
+            href={`/tag/${tag.toLowerCase()}`}
             key={`${id}_${tag}`}
           >
             {tag || <Skeleton className="h-full w-[30px]" />}
