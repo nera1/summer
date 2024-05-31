@@ -6,6 +6,8 @@ tags:
   - jakarataEE
   - mybatis
   - oracle
+created: "2024-05-30 17:00:00"
+modified: "2024-05-31 09:42:00"
 ---
 
 # MyBatis
@@ -31,21 +33,7 @@ tags:
 
 pom.xml 에 추가
 
-```bash
-...
-└─src
-    ├─main
-    │  ├─java
-    │  │  └─com
-    │  │      └─user
-    │  │          └─project
-    │  │                  HelloServlet.java
-...
-```
-
-HelloServlet 이 위치한 패키지에 mybatis 패키지를 생성하고, mybatis 패키지에 MyBatisFactory.java 파일을 생성합니다
-
-```java title="MyBatisFactory.java"
+```java title="../main/java/com/user/project/MyBatisFactory.java"
 package com.user.project.mybatis;
 
 import org.apache.ibatis.io.Resources;
@@ -73,33 +61,9 @@ public class MyBatisFactory {
 }
 ```
 
-파일을 /resources 폴더에 생성한 경우 위처럼 파일 이름으로 접근이 가능합니다
+HelloServlet 이 위치한 패키지에 mybatis 패키지를 생성하고, mybatis 패키지에 MyBatisFactory.java 파일을 생성합니다
 
-```bash
-...
-└─src
-    ├─main
-    │  ├─java
-    │  │  └─com
-    │  │      └─user
-    │  │          └─project
-    │  │              │  HelloServlet.java
-    │  │              │
-    │  │              └─mybatis
-    │  │                      MyBatisFactory.java
-    │  │
-    │  ├─resources
-    │  │      mybatis-config.xml
-    │  │
-    │  └─webapp
-    │      │  index.jsp
-    │      │
-    │      └─WEB-INF
-    │              web.xml
-...
-```
-
-```xml title="mybatis-config.xml"
+```xml title=".../src/main/resources/mybatis-config.xml"
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
@@ -122,9 +86,11 @@ public class MyBatisFactory {
 </configuration>
 ```
 
-value 부분에 드라이버와 정보를 직접 입력해도 되고, 아래처럼 resources 폴더에 파일을 생성하고 파일을 불러와도 됩니다
+파일을 /resources 폴더에 생성한 경우 위처럼 파일 이름으로 접근이 가능합니다
+<br/>
+value 부분에 드라이버와 정보를 직접 입력해도 되고, 아래처럼 /resources 폴더에 파일을 생성하고 파일을 불러와도 됩니다
 
-```xml title="mybatis-config.xml"
+```xml title=".../src/main/resources/mybatis-config.xml"
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
@@ -148,16 +114,16 @@ value 부분에 드라이버와 정보를 직접 입력해도 되고, 아래처�
 </configuration>
 ```
 
-```bash title="db.properties"
+```bash title=".../src/main/resources/db.properties"
 driver=oracle.jdbc.OracleDriver
 url=jdbc:oracle:thin:@localhost:1521:xe
 username=user123456
 password=123456789
 ```
 
-resource 폴더 내에 data.xml 을 생성합니다
+/resource 폴더 내에 data.xml 을 생성합니다
 
-```xml title="data.xml"
+```xml title=".../src/main/resources/data.xml"
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -184,20 +150,20 @@ resource 폴더 내에 data.xml 을 생성합니다
 - SQL 에서 부등호를 사용할 수 없습니다 사용하고자 한다면 부등호가 들어갈 자리를 다음과 같이 감싸주어야 합니다
 
 ```xml
-    <select id="getDataList" resultType="DataDTO">
-        select * from data where id <![CDATA[>=]]> 200 AND id <![CDATA[<=]]> 210
-    </select>
+<select id="getDataList" resultType="DataDTO">
+    select * from data where id <![CDATA[>=]]> 200 AND id <![CDATA[<=]]> 210
+</select>
 ...
-    <select id="getDataList2" resultType="DataDTO" parameterType="HashMap">
-        <![CDATA[
-            select * from data where id >= #{start} AND id <= #{end}
-        ]]>
-    </select>
+<select id="getDataList2" resultType="DataDTO" parameterType="HashMap">
+    <![CDATA[
+        select * from data where id >= #{start} AND id <= #{end}
+    ]]>
+</select>
 ```
 
-- id 값은 겹치면 안 됩니다
+id 값은 겹치면 안 됩니다
 
-```java title="DataDTO.java"
+```java title=".../src/main/java/com/user/project/dto/DataDTO.java"
 package com.user.project.DTO;
 
 import lombok.*;
@@ -220,7 +186,7 @@ public class DataDTO {
 
 DTO를 작성하고 DAO를 작성합니다
 
-```java title="DataDAO.java"
+```java title=".../src/main/java/com/user/project/dao/DataDAO.java"
 package com.user.project.DAO;
 
 import com.user.project.DTO.DataDTO;
@@ -240,7 +206,7 @@ public class DataDAO {
 
 com.user.project.Controller package를 만들고 Data.java 이름의 Servlet 파일을 만듭니다, WEB-INF 폴더에 view.jsp도 작성합니다
 
-```java title="Data.java"
+```java title=".../src/main/java/com/user/project/controller/data/Data.java"
 package com.user.project.Controller;
 
 import com.user.project.DAO.DataDAO;
@@ -263,10 +229,9 @@ public class Data extends HttpServlet {
         req.getRequestDispatcher("/WEB-INF/view.jsp").forward(req, resp);
     }
 }
-
 ```
 
-```xml title="view.jsp"
+```xml title=".../src/main/webapp/WEB-INF/view.jsp"
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -278,4 +243,8 @@ public class Data extends HttpServlet {
 </html>
 ```
 
-/data로 접속하여 정상적으로 view.jsp 페이지가 출력되는지 확인합니다
+/data 경로에서 view.jsp 가 정상적으로 출력되는지 확인합니다
+
+### Reference
+
+[mybatis.org](https://mybatis.org/mybatis-3/getting-started.html)
