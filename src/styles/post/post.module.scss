@@ -827,7 +827,9 @@
   font-size: 85%;
   line-height: 1.45;
   color: #e6edf3;
-  background-color: #161b22;
+  //background-color: #161b22;
+  background-color: transparent !important;
+  border: 0.5px solid var.$bg-color-x-lighter;
   border-radius: 6px;
 }
 
@@ -1167,12 +1169,17 @@
   & > figcaption[data-rehype-pretty-code-title] {
     border-radius: 6px 6px 0 0;
     padding: 6px 16px;
-    background-color: lighten(#161b22, 2.5%);
+    //background-color: lighten(#161b22, 2.5%);
     font-size: small;
     color: var.$color-darker;
+    border: 0.5px solid var.$bg-color-x-lighter;
     & ~ pre {
-      background-color: #161b22 !important;
+      //background-color: #161b22 !important;
+      background-color: transparent !important;
       border-radius: 0 0 6px 6px;
+      box-sizing: border-box;
+      border: 0.5px solid var.$bg-color-x-lighter;
+      border-top: 0;
     }
   }
 }

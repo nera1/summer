@@ -87,8 +87,10 @@ HelloServlet 이 위치한 패키지에 mybatis 패키지를 생성하고, mybat
 ```
 
 파일을 /resources 폴더에 생성한 경우 위처럼 파일 이름으로 접근이 가능합니다
-<br/>
-value 부분에 드라이버와 정보를 직접 입력해도 되고, 아래처럼 /resources 폴더에 파일을 생성하고 파일을 불러와도 됩니다
+\
+value 부분에 드라이버와 정보를 직접 입력해도 되고,
+\
+아래처럼 /resources 폴더에 파일을 생성하고 파일을 불러와도 됩니다
 
 ```xml title=".../src/main/resources/mybatis-config.xml"
 <?xml version="1.0" encoding="UTF-8" ?>
