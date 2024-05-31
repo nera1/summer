@@ -10,9 +10,6 @@ created: Fri, 31 May 2024 02:27:03 GMT
 title: MyBatis 세팅
 ---
 
-
-
-
 # MyBatis
 
 > MyBatis is a first class persistence framework with support for custom SQL, stored procedures and advanced mappings.

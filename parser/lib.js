@@ -78,6 +78,11 @@ function yamlHeaderStringGenerator(yaml) {
   return `${seperator}\n${yaml}${seperator}\n`;
 }
 
+function yamlHeaderStringGenerator(yaml) {
+  const seperator = "---";
+  return `${seperator}\n${yaml}${seperator}`;
+}
+
 module.exports = {
   sortMetadataArrayByCreationDate,
   createDictionaryAndIDs,

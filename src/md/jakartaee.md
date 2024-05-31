@@ -8,9 +8,6 @@ created: Fri, 31 May 2024 02:27:03 GMT
 title: Jakarata EE
 ---
 
-
-
-
 # JakartaEE
 
 ## Structure
