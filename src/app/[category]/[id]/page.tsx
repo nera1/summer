@@ -108,7 +108,7 @@ export default async function Page({
         {tags.map((tag) => (
           <Link
             className={styles["tag-badge"]}
-            href={`/tag/${tag}`}
+            href={`/tag/${tag.toLowerCase()}`}
             key={`${params.id}_${tag}`}
           >
             {tag}
