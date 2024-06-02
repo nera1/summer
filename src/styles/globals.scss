@@ -110,16 +110,16 @@ body {
 }
 
 button.copy-button {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   position: absolute;
-  right: 6px;
-  top: 6px;
+  right: 8px;
+  top: 8px;
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   &:hover {
-    background-color: #161617;
+    background-color: var.$bg-color-lighter;
   }
 }
