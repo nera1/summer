@@ -20,16 +20,18 @@ import {
 
 import Footer from "@/components/footer/footer";
 import ScrollTop from "@/components/scroll-top/scroll-top";
+import PostDate from "./post-date";
+
+import GetCode from "@/plugins/get-code";
 
 import db from "@/data/db.json";
 
 import { Post } from "@/types";
 
-import { dateString } from "@/util";
-
 import { Tag as TagIcon } from "@/components/icon";
 
 import styles from "@/styles/post/post.module.scss";
+import AddCopyButton from "@/plugins/add-copy-button";
 
 export function generateStaticParams() {
   const categories: any = db.categories;
@@ -72,7 +74,9 @@ export default async function Page({
   const { value } = await remark()
     .use(remarkGfm)
     .use(remarkRehype)
+    .use(GetCode)
     .use(rehypePrettyCode)
+    .use(AddCopyButton)
     .use(rehypeStringify)
     .process(file);
 
@@ -97,7 +101,9 @@ export default async function Page({
         <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
           {title}
         </h1>
-        <span className={styles["date"]}>{dateString(created)}</span>
+        <span className={styles["date"]}>
+          <PostDate>{created}</PostDate>
+        </span>
       </div>
       <div
         className={`${styles["post"]} ${styles["markdown"]}`}

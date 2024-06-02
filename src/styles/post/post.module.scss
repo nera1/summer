@@ -1166,6 +1166,7 @@
 }
 
 .markdown figure {
+  position: relative;
   & > figcaption[data-rehype-pretty-code-title] {
     border-radius: 6px 6px 0 0;
     padding: 6px 16px;
@@ -1174,6 +1175,7 @@
     color: var.$color-darker;
     border: 0.5px solid var.$bg-color-x-lighter;
     & ~ pre {
+      position: relative;
       //background-color: #161b22 !important;
       background-color: transparent !important;
       border-radius: 0 0 6px 6px;

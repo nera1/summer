@@ -108,3 +108,18 @@ body {
 .infinite-scroll-component {
   overflow-x: hidden !important;
 }
+
+button.copy-button {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background-color: #3c3c41;
+  }
+}
