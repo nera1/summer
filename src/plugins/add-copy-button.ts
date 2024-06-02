@@ -37,13 +37,13 @@ function AddCopyButton() {
                 [
                   h("path", {
                     d: "M5 9L5 19H15H17C17 20.1046 16.1046 21 15 21H5C3.89543 21 3 20.1046 3 19V9C3 7.89543 3.89543 7 5 7V9Z",
-                    fill: "#dadada",
+                    fill: "#3c3c41",
                   }),
                   h("path", {
                     fillRule: "evenodd",
                     clipRule: "evenodd",
                     d: "M19 5H9L9 15H19V5ZM9 3C7.89543 3 7 3.89543 7 5V15C7 16.1046 7.89543 17 9 17H19C20.1046 17 21 16.1046 21 15V5C21 3.89543 20.1046 3 19 3H9Z",
-                    fill: "#dadada",
+                    fill: "#3c3c41",
                   }),
                 ]
               ),
