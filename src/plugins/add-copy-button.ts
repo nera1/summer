@@ -17,9 +17,20 @@ function AddCopyButton() {
               type: "button",
               className: "copy-button",
               onclick: `((event)=>{
-                const value = \`${codeValue.replace(/`/g, "\\`")}\`;
+                const value = \`${codeValue
+                  .replace(/\\/g, "\\\\") // 역슬래시
+                  .replace(/`/g, "\\`") // 백틱
+                  .replace(/"/g, '\\"') // 큰따옴표
+                  .replace(/'/g, "\\'") // 작은따옴표
+                  .replace(/\$/g, "\\$") // 달러 기호
+                  .replace(/</g, "\\u003C") // less than
+                  .replace(/>/g, "\\u003E") // greater than
+                  .replace(/&/g, "\\u0026") // 앰퍼샌드
+                  .replace(/\r/g, "\\r") // 캐리지 리턴
+                  .replace(/\n/g, "\\n")}\`;
                 navigator.clipboard.writeText(value).then(() => {
-                  alert('Code copied to clipboard!');
+                  const message = document.querySelector('#message');
+                  message.click();
                 }).catch((err) => {
                   console.error('Failed to copy text: ', err);
                 });

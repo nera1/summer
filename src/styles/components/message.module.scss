@@ -1,0 +1,11 @@
+@use "../variables" as var;
+
+.message {
+  background-color: var.$bg-color-lighter;
+  color: var.$color-darker;
+  border: 0;
+  width: 240px;
+  right: 10px;
+  bottom: 10px;
+  position: fixed;
+}

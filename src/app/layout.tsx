@@ -3,6 +3,7 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import Header from "@/components/header/header";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Toaster } from "@/components/ui/toaster";
 
 import CategoryList from "@/components/category-list/category-list";
 
@@ -57,6 +58,7 @@ export default function RootLayout({
             </nav>
           </aside>
           <div className={styles["container"]}>{children}</div>
+          <Toaster />
         </main>
       </body>
     </html>

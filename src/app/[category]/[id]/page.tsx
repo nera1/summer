@@ -21,8 +21,10 @@ import {
 import Footer from "@/components/footer/footer";
 import ScrollTop from "@/components/scroll-top/scroll-top";
 import PostDate from "./post-date";
+import Message from "./message";
 
 import GetCode from "@/plugins/get-code";
+import AddCopyButton from "@/plugins/add-copy-button";
 
 import db from "@/data/db.json";
 
@@ -31,7 +33,6 @@ import { Post } from "@/types";
 import { Tag as TagIcon } from "@/components/icon";
 
 import styles from "@/styles/post/post.module.scss";
-import AddCopyButton from "@/plugins/add-copy-button";
 
 export function generateStaticParams() {
   const categories: any = db.categories;
@@ -123,6 +124,7 @@ export default async function Page({
       </div>
       <Footer />
       <ScrollTop />
+      <Message />
     </>
   );
 }
