@@ -8,6 +8,13 @@ function AddCopyButton() {
         const preTag = node.children.find(
           (child: any) => child.tagName === "pre"
         );
+
+        const figcaptionTag = node.children.find(
+          (child: any) => child.tagName === "figcaption"
+        );
+
+        node.properties.caption = figcaptionTag ? true : undefined;
+
         if (preTag && node.properties && node.properties.codeValue) {
           const codeValue = node.properties.codeValue;
           node.properties.codeValue = undefined;
@@ -61,7 +68,7 @@ function AddCopyButton() {
               ),
             ]
           );
-          preTag.children.unshift(button);
+          node.children.unshift(button);
         }
       }
     });
