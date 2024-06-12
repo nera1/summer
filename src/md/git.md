@@ -36,7 +36,7 @@ title: Git 1
 
 git 의 현재 상태를 출력한다
 
-```bash title="bash"
+```bash title="Bash"
 $ git status
 On branch main
 Your branch is up to date with 'origin/main'. // 현재 branch
@@ -51,3 +51,25 @@ nothing added to commit but untracked files present (use "git add" to track) // 
 위 markdown.md 파일은 git add 하기 전 작업 트리 단계의 파일이다
 
 ### git add
+
+```bash title="Bash"
+$ git add markdown.md
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   markdown.md
+```
+
+working tree 의 markdown.md 파일이 stage 에 추가되었다
+
+### git commit
+
+```bash title="Bash"
+$ git commit -m "add markdown.md"
+[main 30fa8d2] add markdown.md
+ 1 file changed, 53 insertions(+)
+ create mode 100644 markdown.md
+```
