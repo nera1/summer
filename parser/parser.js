@@ -61,7 +61,8 @@ const { dictionary, idList } = createDictionaryAndIDs(metadataArray);
 
 db["dictionary"] = dictionary;
 db["list"] = idList;
-db["tags"] = createTagMap(metadataArray);
+db["rList"] = [...idList].reverse();
+db["tags"] = createTagMap(metadataArray.reverse());
 db["titles"] = createTitleList(metadataArray);
 
 const { categoryOriginalMap, categoryMap } = createCategoryMap(metadataArray);

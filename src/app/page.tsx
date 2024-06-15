@@ -61,7 +61,9 @@ function RecentPostList() {
   const {
     dictionary,
     list,
-  }: { dictionary: { [key: string]: Post }; list: string[] } = db;
+    rList,
+  }: { dictionary: { [key: string]: Post }; list: string[]; rList: string[] } =
+    db;
 
   const {
     limit: { totalList },
@@ -80,7 +82,7 @@ function RecentPostList() {
         limit: totalList,
         ...prev,
         dictionary,
-        postIdList: list,
+        postIdList: rList,
       })
     );
   }, 1000);
@@ -93,10 +95,10 @@ function RecentPostList() {
         limit: totalList,
         ...prev,
         dictionary,
-        postIdList: list,
+        postIdList: rList,
       })
     );
-  }, [totalList, dictionary, list]);
+  }, [totalList, dictionary, rList]);
 
   const next = () => {
     nexter();
@@ -106,7 +108,7 @@ function RecentPostList() {
     <InfiniteScroll
       dataLength={info.list.length}
       next={next}
-      hasMore={info.list.length < list.length}
+      hasMore={info.list.length < rList.length}
       loader={<Spinner />}
     >
       <ul className={styles["recent-post-list"]}>

@@ -1,6 +1,6 @@
 function sortMetadataArrayByCreationDate(array) {
   array.sort((prev, next) => {
-    return new Date(next.created) - new Date(prev.created);
+    return new Date(prev.created) - new Date(next.created);
   });
 }
 
@@ -47,7 +47,7 @@ function createTitleList(array) {
       });
     }
   }
-  return titleList;
+  return titleList.reverse();
 }
 
 function createCategoryMap(array) {
