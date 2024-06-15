@@ -113,8 +113,12 @@ button.copy-button {
   width: 28px;
   height: 28px;
   position: absolute;
-  right: 8px;
-  top: 8px;
+  right: 10px;
+  top: 10px;
+  figure[caption] & {
+    z-index: 1;
+    top: 3px;
+  }
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -122,4 +126,8 @@ button.copy-button {
   &:hover {
     background-color: var.$bg-color-lighter;
   }
+}
+
+button#message {
+  display: none;
 }
